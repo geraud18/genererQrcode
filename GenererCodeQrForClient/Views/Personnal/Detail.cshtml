@@ -1,0 +1,83 @@
+﻿@model GenererCodeQrForClient.Models.PersonnelModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Personnal</h4>
+    <hr />
+    <div class="row" style="display:flex;">
+        <dl class="dl-horizontal col-lg-4">
+            <dt>
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Number)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Number)
+            </dd>
+
+        </dl>
+
+        <div class="col-lg-4" style="position: relative; bottom: 16px; right: 19px; border: 1px solid aquamarine; width: 16%;">
+            @if (ViewBag.QRCodeImage != null)
+            {
+                <img src="@ViewBag.QRCodeImage" alt="" style="height:150px;width:150px" />
+            }
+        </div>
+
+    </div>
+    
+</div>
+@using (Html.BeginForm())
+{
+    <div style="display:none;">
+        <input type="text" name="firstname" value="@Html.DisplayFor(model => model.FirstName)" />
+        <input type="text" name="lastname" value="@Html.DisplayFor(model => model.LastName)" />
+        <input type="text" name="email" value="@Html.DisplayFor(model => model.Email)" />
+        <input type="text" name="number" value="@Html.DisplayFor(model => model.Number)" />
+        <input type="number" name="id" value="@Html.DisplayFor(model => model.Id)" />
+   </div>
+    <input type="submit" value="Generate" />
+}
+<hr />
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

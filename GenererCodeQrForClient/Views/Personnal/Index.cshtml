@@ -1,0 +1,105 @@
+﻿@model IEnumerable<GenererCodeQrForClient.Models.PersonnelModel>
+
+@{
+    ViewBag.Title = "Personnel";
+
+}
+
+<h2>Personnal</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table" id="personnalTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                Action
+            </th>
+
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </tfoot>
+</table>
+
+<link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+@section scripts{
+
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#personnalTable").DataTable(
+                {
+                    "ajax": {
+                        "url": "/Personnal/GetList",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "Id" },
+                        { "data": "FirstName" },
+                        { "data": "LastName" },
+                        { "data": "Email" },
+                        { "data": "Number" }
+
+                    ],
+                    "aoColumnDefs": [
+                        {
+                            "aTargets": [5],
+                            "mData": "Id",
+                            "mRender": function (data, type, full) {
+                                return '<a href="Personnal/Edit/' + data + '">Edit</a> <a href="Personnal/Detail/' + data + '">Details</a> <a href="Personnal/Delete/' + data + '">Delete</a>';
+
+                            }
+                        }
+                    ]
+
+                });
+
+        });
+
+    </script>
+
+}

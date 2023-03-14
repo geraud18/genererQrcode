@@ -1,0 +1,541 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cuemon.Data.Integrity</name>
+    </assembly>
+    <members>
+        <member name="T:Cuemon.Data.Integrity.CacheValidator">
+            <summary>
+            Provides a way to represent cacheable data-centric content that can be validated by cache-aware applications.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.CacheValidator.GetMostSignificant(Cuemon.Data.Integrity.CacheValidator[])">
+            <summary>
+            Gets the most significant <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> object from the most significant (largest) value of either <see cref="P:Cuemon.Data.Integrity.CacheValidator.Created"/> or <see cref="P:Cuemon.Data.Integrity.CacheValidator.Modified"/> in the specified <paramref name="sequence"/>.
+            </summary>
+            <param name="sequence">A sequence of  <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> objects to parse for the most significant (largest) value of either <see cref="P:Cuemon.Data.Integrity.CacheValidator.Created"/> or <see cref="P:Cuemon.Data.Integrity.CacheValidator.Modified"/>.</param>
+            <returns>The most significant <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> object from the specified <paramref name="sequence"/>.</returns>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.CacheValidator.AssemblyReference">
+            <summary>
+            Gets or sets the <see cref="T:System.Reflection.Assembly"/> that will serve as the ideal candidate for a <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> reference point. Default is <see cref="M:System.Reflection.Assembly.GetEntryAssembly"/> with a fallback to <c>Cuemon.Core.dll</c>.
+            </summary>
+            <value>The assembly to use as a <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> reference point.</value>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="value"/> is null.
+            </exception>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.CacheValidator.Default">
+            <summary>
+            Gets a <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> object that is initialized to a default representation that should be considered invalid for usage beyond this check.
+            </summary>
+            <value>A <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> object that is initialized to a default representation.</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.CacheValidator.ReferencePoint">
+            <summary>
+            Gets a <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> object that represents an <see cref="T:System.Reflection.Assembly"/> reference point.
+            </summary>
+            <value>A <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> object that represents an <see cref="T:System.Reflection.Assembly"/> reference point.</value>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.CacheValidator.#ctor(Cuemon.Data.Integrity.EntityInfo,System.Func{Cuemon.Security.Hash},Cuemon.Data.Integrity.EntityDataIntegrityMethod)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Data.Integrity.CacheValidator" /> class.
+            </summary>
+            <param name="entity">An <see cref="T:Cuemon.Data.Integrity.EntityInfo"/> object that representing the meta-data of an entity.</param>
+            <param name="hashFactory">The function delegate that is invoked to produce the <see cref="T:Cuemon.Security.HashResult" />.</param>
+            <param name="method">A <see cref="T:Cuemon.Data.Integrity.EntityDataIntegrityMethod"/> enumeration value that indicates how a checksum is manipulated. Default is <see cref="F:Cuemon.Data.Integrity.EntityDataIntegrityMethod.Unaltered"/>.</param>
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">method</exception>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.CacheValidator.Created">
+            <summary>
+            Gets a <see cref="T:System.DateTime"/> value from when data this instance represents was first created, expressed as the Coordinated Universal Time (UTC).
+            </summary>
+            <value>A <see cref="T:System.DateTime"/> value from when data this instance represents was first created, expressed as the Coordinated Universal Time (UTC).</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.CacheValidator.Modified">
+            <summary>
+            Gets a <see cref="T:System.DateTime"/> value from when data this instance represents was last modified, expressed as the Coordinated Universal Time (UTC).
+            </summary>
+            <value>A <see cref="T:System.DateTime"/> value from when data this instance represents was last modified, expressed as the Coordinated Universal Time (UTC).</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.CacheValidator.Method">
+            <summary>
+            Gets an enumeration value of <see cref="T:Cuemon.Data.Integrity.EntityDataIntegrityMethod"/> indicating the usage method of this instance.
+            </summary>
+            <value>One of the enumeration values of <see cref="T:Cuemon.Data.Integrity.EntityDataIntegrityMethod"/> that indicates the usage method of this instance.</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.CacheValidator.Validation">
+            <summary>
+            Gets an enumeration value of <see cref="T:Cuemon.Data.Integrity.EntityDataIntegrityValidation"/> indicating the strength of this instance.
+            </summary>
+            <value>One of the enumeration values of <see cref="T:Cuemon.Data.Integrity.EntityDataIntegrityValidation"/> that specifies the strength of this instance.</value>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.CacheValidator.CombineWith(System.Byte[])">
+            <summary>
+            Combines the <paramref name="additionalChecksum" /> to the representation of this instance.
+            </summary>
+            <param name="additionalChecksum">A <see cref="T:byte[]" /> containing a checksum of the additional data this instance must represent.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.CacheValidator.Clone">
+            <summary>
+            Creates a shallow copy of the current <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> object.
+            </summary>
+            <returns>A new <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> that is a copy of this instance.</returns>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.CacheValidator.GetMostSignificant">
+            <summary>
+            Gets the most significant (largest) value of either <see cref="P:Cuemon.Data.Integrity.CacheValidator.Created"/> or <see cref="P:Cuemon.Data.Integrity.CacheValidator.Modified"/>.
+            </summary>
+            <returns>The most significant (largest) value of either <see cref="P:Cuemon.Data.Integrity.CacheValidator.Created"/> or <see cref="P:Cuemon.Data.Integrity.CacheValidator.Modified"/>.</returns>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.CacheValidatorFactory">
+            <summary>
+            Provides access to factory methods for creating and configuring <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> instances.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.CacheValidatorFactory.CreateValidator(System.IO.FileInfo,System.Func{Cuemon.Security.Hash},System.Action{Cuemon.Data.Integrity.FileChecksumOptions})">
+            <summary>
+            Creates and returns an instance of <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> from the specified <paramref name="file"/>.
+            </summary>
+            <param name="file">The <see cref="T:System.IO.FileInfo"/> to convert.</param>
+            <param name="hashFactory">The function delegate that is invoked to produce the <see cref="T:Cuemon.Security.HashResult" />. Default is <see cref="M:Cuemon.Security.HashFactory.CreateFnv128(System.Action{Cuemon.Security.FowlerNollVoOptions})"/>.</param>
+            <param name="setup">The <see cref="T:Cuemon.Data.Integrity.FileChecksumOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> that represents the <paramref name="file"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="file"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.CacheValidatorFactory.CreateValidator(System.Reflection.Assembly,System.Func{Cuemon.Security.Hash},System.Action{Cuemon.Data.Integrity.FileChecksumOptions})">
+            <summary>
+            Creates and returns an instance of <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> from the specified <paramref name="assembly"/>.
+            </summary>
+            <param name="assembly">The <see cref="T:System.Reflection.Assembly"/> to convert.</param>
+            <param name="hashFactory">The function delegate that is invoked to produce the <see cref="T:Cuemon.Security.HashResult" />. Default is <see cref="M:Cuemon.Security.HashFactory.CreateFnv128(System.Action{Cuemon.Security.FowlerNollVoOptions})"/>.</param>
+            <param name="setup">The <see cref="T:Cuemon.Data.Integrity.FileChecksumOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Data.Integrity.CacheValidator"/> that represents the <paramref name="assembly"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="assembly"/> cannot be null.
+            </exception>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.ChecksumBuilder">
+            <summary>
+            Provides a way to fluently represent checksum values of arbitrary data.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilder.#ctor(System.Func{Cuemon.Security.Hash})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> class.
+            </summary>
+            <param name="hashFactory">The function delegate that is invoked to produce the <see cref="T:Cuemon.Security.HashResult"/>.</param>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilder.#ctor(System.Byte[],System.Func{Cuemon.Security.Hash})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> class.
+            </summary>
+            <param name="checksum">A <see cref="T:byte[]"/> containing a checksum of the data this instance represents.</param>
+            <param name="hashFactory">The function delegate that is invoked to produce the <see cref="T:Cuemon.Security.HashResult"/>.</param>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.ChecksumBuilder.HashFactory">
+            <summary>
+            Gets the value factory of this instance.
+            </summary>
+            <value>The value factory of this instance.</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.ChecksumBuilder.Bytes">
+            <summary>
+            Gets a byte array that is the result of the associated <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.
+            </summary>
+            <value>The byte array that is the result of the associated <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.ChecksumBuilder.Checksum">
+            <summary>
+            Gets a <see cref="T:Cuemon.Security.HashResult"/> containing a computed hash value of the data this instance represents.
+            </summary>
+            <value>A <see cref="T:Cuemon.Security.HashResult"/> containing a computed hash value of the data this instance represents.</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.ChecksumBuilder.ComputedHash">
+            <summary>
+            Gets or sets the computed checksum of <see cref="P:Cuemon.Data.Integrity.ChecksumBuilder.Bytes"/>.
+            </summary>
+            <value>The computed checksum of <see cref="P:Cuemon.Data.Integrity.ChecksumBuilder.Bytes"/>.</value>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilder.CombineWith(System.Byte[])">
+            <summary>
+            Combines the <paramref name="additionalChecksum" /> to the representation of this instance.
+            </summary>
+            <param name="additionalChecksum">A <see cref="T:byte[]"/> containing a checksum of the additional data this instance must represent.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilder.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilder.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" /> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the current <see cref="T:System.Object" />.</param>
+            <returns><c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilder.Equals(Cuemon.Data.Integrity.ChecksumBuilder)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns><c>true</c> if the current object is equal to the other parameter; otherwise, <c>false</c>. </returns>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilder.ToString">
+            <summary>
+            Converts the the <see cref="P:Cuemon.Data.Integrity.ChecksumBuilder.Bytes"/> of this instance to its equivalent hexadecimal representation.
+            </summary>
+            <returns>A hexadecimal representation of this instance.</returns>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.DataIntegrityFactory">
+            <summary>
+            Provides access to factory methods for creating and configuring implementations of the <see cref="T:Cuemon.Data.Integrity.IDataIntegrity"/> interface.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.DataIntegrityFactory.CreateIntegrity(System.IO.FileInfo,System.Action{Cuemon.Data.Integrity.FileIntegrityOptions})">
+            <summary>
+            Creates and returns an object implementing the <see cref="T:Cuemon.Data.Integrity.IDataIntegrity"/> interface from the specified <paramref name="file"/>.
+            </summary>
+            <param name="file">The <see cref="T:System.IO.FileInfo"/> to convert.</param>
+            <param name="setup">The <see cref="T:Cuemon.Data.Integrity.FileIntegrityOptions"/> which need to be configured.</param>
+            <returns>An object implementing the <see cref="T:Cuemon.Data.Integrity.IDataIntegrity"/> interface that represents the integrity of <paramref name="file"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="file"/> cannot be null.
+            </exception>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.EntityDataIntegrityMethod">
+            <summary>
+            Specifies ways for a checksum of data to be computed.
+            </summary>
+        </member>
+        <member name="F:Cuemon.Data.Integrity.EntityDataIntegrityMethod.Unaltered">
+            <summary>
+            Indicates default behavior which is leaving the checksum unaltered.
+            </summary>
+        </member>
+        <member name="F:Cuemon.Data.Integrity.EntityDataIntegrityMethod.Combined">
+            <summary>
+            Indicates that a checksum is combined from all given input and hence always will be available.
+            </summary>
+        </member>
+        <member name="F:Cuemon.Data.Integrity.EntityDataIntegrityMethod.Timestamp">
+            <summary>
+            Indicates that a checksum is generated from date-time inputs.
+            </summary>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.EntityDataIntegrityValidation">
+            <summary>
+            Specifies the validation strength of a data checksum.
+            </summary>
+        </member>
+        <member name="F:Cuemon.Data.Integrity.EntityDataIntegrityValidation.Unspecified">
+            <summary>
+            Indicates that no checksum strength was specified.
+            </summary>
+        </member>
+        <member name="F:Cuemon.Data.Integrity.EntityDataIntegrityValidation.Weak">
+            <summary>
+            Indicates that a weak, semantic equivalent checksum was specified.
+            </summary>
+        </member>
+        <member name="F:Cuemon.Data.Integrity.EntityDataIntegrityValidation.Strong">
+            <summary>
+            Indicates that a strong, byte-for-byte checksum was specified.
+            </summary>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.EntityInfo">
+            <summary>
+            Represents the metadata information normally associated with an entity/resource.
+            Implements the <see cref="T:Cuemon.Data.Integrity.IEntityInfo" />
+            </summary>
+            <seealso cref="T:Cuemon.Data.Integrity.IEntityInfo" />
+        </member>
+        <member name="M:Cuemon.Data.Integrity.EntityInfo.#ctor(System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Data.Integrity.EntityInfo"/> class.
+            </summary>
+            <param name="created">A <see cref="T:System.DateTime" /> value for when data this instance represents was first created.</param>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.EntityInfo.#ctor(System.DateTime,System.Nullable{System.DateTime})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Data.Integrity.EntityInfo"/> class.
+            </summary>
+            <param name="created">A <see cref="T:System.DateTime" /> value for when data this instance represents was first created.</param>
+            <param name="modified">A <see cref="T:System.DateTime" /> value for when data this instance represents was last modified.</param>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.EntityInfo.#ctor(System.DateTime,System.Nullable{System.DateTime},System.Byte[],Cuemon.Data.Integrity.EntityDataIntegrityValidation)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Data.Integrity.EntityInfo"/> class.
+            </summary>
+            <param name="created">A <see cref="T:System.DateTime" /> value for when data this instance represents was first created.</param>
+            <param name="modified">A <see cref="T:System.DateTime" /> value for when data this instance represents was last modified.</param>
+            <param name="checksum">A <see cref="T:byte[]"/> containing a checksum of the data this instance represents.</param>
+            <param name="validation">A <see cref="T:Cuemon.Data.Integrity.EntityDataIntegrityValidation"/> enumeration value that indicates the validation strength of the specified <paramref name="checksum"/>. Default is <see cref="F:Cuemon.Data.Integrity.EntityDataIntegrityValidation.Weak"/>.</param>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.EntityInfo.Created">
+            <summary>
+            Gets a <see cref="T:System.DateTime"/> value from when data this resource represents was first created, expressed as the Coordinated Universal Time (UTC).
+            </summary>
+            <value>The timestamp from when data this resource represents was first created.</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.EntityInfo.Modified">
+            <summary>
+            Gets a <see cref="T:System.DateTime"/> value from when data this resource represents was last modified, expressed as the Coordinated Universal Time (UTC).
+            </summary>
+            <value>The timestamp from when data this resource represents was last modified.</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.EntityInfo.Checksum">
+            <summary>
+            Gets a <see cref="T:Cuemon.Security.HashResult"/> that represents the integrity of this instance.
+            </summary>
+            <value>The checksum that represents the integrity of this instance.</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.EntityInfo.Validation">
+            <summary>
+            Gets the validation strength of the integrity of this resource.
+            </summary>
+            <value>The validation strength of the integrity of this resource.</value>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> class tailored to adhere the decorator pattern.
+            </summary>
+            <seealso cref="T:Cuemon.IDecorator`1"/>
+            <seealso cref="T:Cuemon.Decorator`1"/>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions.CombineWith``1(Cuemon.IDecorator{``0},System.Double)">
+            <summary>
+            Combines the <paramref name="additionalChecksum"/> to the representation of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</typeparam>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="additionalChecksum">A <see cref="T:System.Double"/> value containing a checksum of the additional data the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> must represent.</param>
+            <returns>An updated instance of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions.CombineWith``1(Cuemon.IDecorator{``0},System.Int16)">
+            <summary>
+            Combines the <paramref name="additionalChecksum"/> to the representation of this instance.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</typeparam>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="additionalChecksum">A <see cref="T:System.Int16"/> value containing a checksum of the additional data the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> must represent.</param>
+            <returns>An updated instance of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions.CombineWith``1(Cuemon.IDecorator{``0},System.String)">
+            <summary>
+            Combines the <paramref name="additionalChecksum"/> to the representation of this instance.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</typeparam>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="additionalChecksum">A <see cref="T:System.String"/> containing a checksum of the additional data the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> must represent.</param>
+            <returns>An updated instance of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions.CombineWith``1(Cuemon.IDecorator{``0},System.Int32)">
+            <summary>
+            Combines the <paramref name="additionalChecksum"/> to the representation of this instance.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</typeparam>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="additionalChecksum">A <see cref="T:System.Int32"/> value containing a checksum of the additional data the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> must represent.</param>
+            <returns>An updated instance of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions.CombineWith``1(Cuemon.IDecorator{``0},System.Int64)">
+            <summary>
+            Combines the <paramref name="additionalChecksum"/> to the representation of this instance.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</typeparam>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="additionalChecksum">A <see cref="T:System.Int64"/> value containing a checksum of the additional data the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> must represent.</param>
+            <returns>An updated instance of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions.CombineWith``1(Cuemon.IDecorator{``0},System.Single)">
+            <summary>
+            Combines the <paramref name="additionalChecksum"/> to the representation of this instance.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</typeparam>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="additionalChecksum">A <see cref="T:System.Single"/> value containing a checksum of the additional data the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> must represent.</param>
+            <returns>An updated instance of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions.CombineWith``1(Cuemon.IDecorator{``0},System.UInt16)">
+            <summary>
+            Combines the <paramref name="additionalChecksum"/> to the representation of this instance.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</typeparam>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="additionalChecksum">A <see cref="T:System.UInt16"/> value containing a checksum of the additional data the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> must represent.</param>
+            <returns>An updated instance of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions.CombineWith``1(Cuemon.IDecorator{``0},System.UInt32)">
+            <summary>
+            Combines the <paramref name="additionalChecksum"/> to the representation of this instance.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</typeparam>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="additionalChecksum">A <see cref="T:System.UInt32"/> value containing a checksum of the additional data the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> must represent.</param>
+            <returns>An updated instance of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions.CombineWith``1(Cuemon.IDecorator{``0},System.UInt64)">
+            <summary>
+            Combines the <paramref name="additionalChecksum"/> to the representation of this instance.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</typeparam>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="additionalChecksum">A <see cref="T:System.UInt64"/> value containing a checksum of the additional data the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> must represent.</param>
+            <returns>An updated instance of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.ChecksumBuilderDecoratorExtensions.CombineWith``1(Cuemon.IDecorator{``0},System.Byte[])">
+            <summary>
+            Combines the <paramref name="additionalChecksum" /> to the representation of this instance.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/>.</typeparam>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="additionalChecksum">A <see cref="T:byte[]"/> containing a checksum of the additional data the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> must represent.</param>
+            <returns>An updated instance of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.FileChecksumOptions">
+            <summary>
+            Configuration options for <see cref="T:System.IO.FileInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.FileChecksumOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Data.Integrity.FileChecksumOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.Data.Integrity.FileChecksumOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.Data.Integrity.FileChecksumOptions.Method"/></term>
+                    <description><see cref="F:Cuemon.Data.Integrity.EntityDataIntegrityMethod.Unaltered"/></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.FileChecksumOptions.Method">
+            <summary>
+            Gets an enumeration value of <see cref="T:Cuemon.Data.Integrity.EntityDataIntegrityMethod"/> indicating how a checksum is generated.
+            </summary>
+            <value>One of the enumeration values of <see cref="T:Cuemon.Data.Integrity.EntityDataIntegrityMethod"/> that indicates how a checksum is generated.</value>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.FileIntegrityOptions">
+            <summary>
+            Configuration options for <see cref="T:System.IO.FileInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Data.Integrity.FileIntegrityOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Data.Integrity.FileIntegrityOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.Data.Integrity.FileIntegrityOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.Data.Integrity.FileIntegrityOptions.IntegrityConverter"/></term>
+                    <description><c>null</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.FileIntegrityOptions.IntegrityConverter">
+            <summary>
+            Gets or sets the function delegate that will convert an instance of <see cref="T:System.IO.FileInfo"/> and a <see cref="T:byte[]"/> into an object implementing the <see cref="T:Cuemon.Data.Integrity.IDataIntegrity"/> interface.
+            </summary>
+            <value>The function delegate that returns an object implementing the <see cref="T:Cuemon.Data.Integrity.IDataIntegrity"/> interface.</value>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="value"/> cannot be null.
+            </exception>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.IDataIntegrity">
+            <summary>
+            An interface that is used to determine the integrity of data.
+            </summary>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.IDataIntegrity.Checksum">
+            <summary>
+            Gets a <see cref="T:Cuemon.Security.HashResult"/> that represents the integrity of this instance.
+            </summary>
+            <value>The checksum that represents the integrity of this instance.</value>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.IEntityDataIntegrity">
+            <summary>
+            An interface that represents the integrity of data that is normally associated with an entity/resource.
+            </summary>
+            <seealso cref="T:Cuemon.Data.Integrity.IDataIntegrity" />
+        </member>
+        <member name="P:Cuemon.Data.Integrity.IEntityDataIntegrity.Validation">
+            <summary>
+            Gets the validation strength of the integrity of this resource.
+            </summary>
+            <value>The validation strength of the integrity of this resource.</value>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.IEntityDataTimestamp">
+            <summary>
+            An interface that represents the timestamp of data that is normally associated with an entity/resource.
+            </summary>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.IEntityDataTimestamp.Created">
+            <summary>
+            Gets a <see cref="T:System.DateTime"/> value from when data this resource represents was first created, expressed as the Coordinated Universal Time (UTC).
+            </summary>
+            <value>The timestamp from when data this resource represents was first created.</value>
+        </member>
+        <member name="P:Cuemon.Data.Integrity.IEntityDataTimestamp.Modified">
+            <summary>
+            Gets a <see cref="T:System.DateTime"/> value from when data this resource represents was last modified, expressed as the Coordinated Universal Time (UTC).
+            </summary>
+            <value>The timestamp from when data this resource represents was last modified.</value>
+        </member>
+        <member name="T:Cuemon.Data.Integrity.IEntityInfo">
+            <summary>
+            An interface that represents both the timestamp and integrity of data that is normally associated with an entity/resource.
+            </summary>
+            <seealso cref="T:Cuemon.Data.Integrity.IEntityDataTimestamp" />
+            <seealso cref="T:Cuemon.Data.Integrity.IEntityDataIntegrity" />
+        </member>
+    </members>
+</doc>

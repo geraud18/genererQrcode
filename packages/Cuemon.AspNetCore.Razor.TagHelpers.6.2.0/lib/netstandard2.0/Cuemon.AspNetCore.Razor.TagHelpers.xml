@@ -1,0 +1,467 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cuemon.AspNetCore.Razor.TagHelpers</name>
+    </assembly>
+    <members>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.AppImageTagHelper">
+            <summary>
+            Provides an implementation targeting &lt;img&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning of a static image placed on a location outside (but tied to) your application. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.AppImageTagHelper.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Razor.TagHelpers.AppTagHelperOptions},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ImageCdnTagHelper"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.AppTagHelperOptions" /> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.AppLinkTagHelper">
+            <summary>
+            Provides an implementation targeting &lt;link&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning of a static resource placed on a location outside (but tied to) your application. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.LinkTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.AppLinkTagHelper.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Razor.TagHelpers.AppTagHelperOptions},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.AppLinkTagHelper"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.AppTagHelperOptions" /> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.AppScriptTagHelper">
+            <summary>
+            Provides an implementation targeting &lt;script&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning of a static script placed on a location outside (but tied to) your application. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ScriptTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.AppScriptTagHelper.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Razor.TagHelpers.AppTagHelperOptions},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ScriptCdnTagHelper"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions" /> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.AppTagHelperOptions">
+            <summary>
+            Configuration options for <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.AppImageTagHelper"/>, <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.AppLinkTagHelper"/> and <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.AppScriptTagHelper"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.AppTagHelperOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.AppTagHelperOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.AppTagHelperOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.Scheme"/></term>
+                    <description><see cref="F:Cuemon.AspNetCore.Razor.TagHelpers.ProtocolUriScheme.Relative"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.BaseUrl"/></term>
+                    <description><c>null</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.CacheBustingTagHelper`1">
+            <summary>
+            Provides a base-class for static content related <see cref="T:Microsoft.AspNetCore.Razor.TagHelpers.TagHelper"/> implementation in Razor for ASP.NET Core.
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Razor.TagHelpers.TagHelper" />
+            <seealso cref="T:Cuemon.Configuration.IConfigurable`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.CacheBustingTagHelper`1.#ctor(Microsoft.Extensions.Options.IOptions{`0},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelper"/> class.
+            </summary>
+            <param name="setup">The <typeparamref name="TOptions"/> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> interface.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.CacheBustingTagHelper`1.CacheBusting">
+            <summary>
+            Gets the by constructor optional supplied object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> interface.
+            </summary>
+            <value>The by constructor optional supplied object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> interface.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.CacheBustingTagHelper`1.UseCacheBusting">
+            <summary>
+            Gets a value indicating whether an object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> interface is specified.
+            </summary>
+            <value><c>true</c> if an object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> interface is specified; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.CacheBustingTagHelper`1.Options">
+            <summary>
+            Gets the configured options of this instance.
+            </summary>
+            <value>The configured options of this instance.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnImageTagHelper">
+            <summary>
+            Provides an implementation targeting &lt;img&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning of a static image placed on a location with a CDN role. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.CdnImageTagHelper.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ImageCdnTagHelper"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions" /> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnLinkTagHelper">
+            <summary>
+            Provides an implementation targeting &lt;link&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning of a static resource placed on a location with a CDN role. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.LinkTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.CdnLinkTagHelper.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.LinkCdnTagHelper"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions" /> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnScriptTagHelper">
+            <summary>
+            Provides an implementation targeting &lt;script&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning of a static script placed on a location with a CDN role. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ScriptTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.CdnScriptTagHelper.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ScriptCdnTagHelper"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions" /> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelper">
+            <summary>
+            Provides a base-class for CDN-related <see cref="T:Microsoft.AspNetCore.Razor.TagHelpers.TagHelper"/> implementation in Razor for ASP.NET Core.
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Razor.TagHelpers.TagHelper" />
+            <seealso cref="T:Cuemon.Configuration.IConfigurable`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelper.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelper"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions" /> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> interface.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelper.CacheBusting">
+            <summary>
+            Gets the by constructor optional supplied object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> interface.
+            </summary>
+            <value>The by constructor optional supplied object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> interface.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelper.UseCacheBusting">
+            <summary>
+            Gets a value indicating whether an object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> interface is specified.
+            </summary>
+            <value><c>true</c> if an object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> interface is specified; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelper.Options">
+            <summary>
+            Gets the configured options of this instance.
+            </summary>
+            <value>The configured options of this instance.</value>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelper.GetBaseUrl">
+            <summary>
+            Gets the base URL of this instance.
+            </summary>
+            <returns>The base URL of this instance.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions">
+            <summary>
+            Configuration options for <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ImageCdnTagHelper"/>, <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.LinkCdnTagHelper"/> and <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ScriptCdnTagHelper"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.Scheme"/></term>
+                    <description><see cref="F:Cuemon.AspNetCore.Razor.TagHelpers.ProtocolUriScheme.Relative"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.BaseUrl"/></term>
+                    <description><c>null</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnUriScheme">
+            <summary>
+            Defines protocol URI schemes for CDN related operations.
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Razor.TagHelpers.CdnUriScheme.None">
+            <summary>
+            Specifies that the URI scheme is not defined.
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Razor.TagHelpers.CdnUriScheme.Relative">
+            <summary>
+            Specifies that the URI scheme is protocol-relative (//).
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Razor.TagHelpers.CdnUriScheme.Http">
+            <summary>
+            Specifies that the URI scheme is Hypertext Transfer Protocol (HTTP).
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Razor.TagHelpers.CdnUriScheme.Https">
+            <summary>
+            Specifies that the URI scheme is Secure Hypertext Transfer Protocol (HTTPS).
+            </summary>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.ImageCdnTagHelper">
+            <summary>
+            Provides an implementation targeting &lt;img&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning of a static image placed on a location with a CDN role. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.ImageCdnTagHelper.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ImageCdnTagHelper"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions" /> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1">
+            <summary>
+            Provides a base-class for targeting &lt;img&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CacheBustingTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1.#ctor(Microsoft.Extensions.Options.IOptions{`0},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1"/> class.
+            </summary>
+            <param name="setup">The <typeparamref name="TOptions"/> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1.Id">
+            <summary>
+            Gets or sets the identifier of the image. 
+            </summary>
+            <value>The identifier of the image.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1.Class">
+            <summary>
+            Gets or sets the class name of the image.
+            </summary>
+            <value>The class name of the image.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1.Src">
+            <summary>
+            Gets or sets the source of the image.
+            </summary>
+            <value>The source of the image.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1.Alt">
+            <summary>
+            Gets or sets the alternative text of the image.
+            </summary>
+            <value>The alternative text of the image.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1.Title">
+            <summary>
+            Gets or sets the title of the image.
+            </summary>
+            <value>The title of the image.</value>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.ImageTagHelper`1.ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext,Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput)">
+            <summary>
+            Asynchronously executes the <see cref="T:TagHelper" /> with the given <paramref name="context" /> and <paramref name="output" />.
+            </summary>
+            <param name="context">Contains information associated with the current HTML tag.</param>
+            <param name="output">A stateful HTML element used to generate an HTML tag.</param>
+            <returns>A <see cref="T:Task" /> that on completion updates the <paramref name="output" />.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.LinkCdnTagHelper">
+            <summary>
+            Provides an implementation targeting &lt;link&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning of a static resource placed on a location with a CDN role. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.LinkTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.LinkCdnTagHelper.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.LinkCdnTagHelper"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions" /> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.LinkTagHelper`1">
+            <summary>
+            Provides a base-class for targeting &lt;link&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CacheBustingTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.LinkTagHelper`1.#ctor(Microsoft.Extensions.Options.IOptions{`0},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.LinkTagHelper`1"/> class.
+            </summary>
+            <param name="setup">The <typeparamref name="TOptions"/> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.LinkTagHelper`1.Href">
+            <summary>
+            Gets or sets the location of the link.
+            </summary>
+            <value>The location of the link.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.LinkTagHelper`1.Type">
+            <summary>
+            Gets or sets the type of the link.
+            </summary>
+            <value>The type of the link.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.LinkTagHelper`1.Rel">
+            <summary>
+            Gets or sets the relation of the link.
+            </summary>
+            <value>The relation of the link.</value>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.LinkTagHelper`1.ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext,Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput)">
+            <summary>
+            Asynchronously executes the <see cref="T:TagHelper" /> with the given <paramref name="context" /> and <paramref name="output" />.
+            </summary>
+            <param name="context">Contains information associated with the current HTML tag.</param>
+            <param name="output">A stateful HTML element used to generate an HTML tag.</param>
+            <returns>A <see cref="T:Task" /> that on completion updates the <paramref name="output" />.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.ProtocolUriScheme">
+            <summary>
+            Defines protocol URI schemes for static resource related operations.
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Razor.TagHelpers.ProtocolUriScheme.None">
+            <summary>
+            Specifies that the URI scheme is not defined.
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Razor.TagHelpers.ProtocolUriScheme.Relative">
+            <summary>
+            Specifies that the URI scheme is protocol-relative (//).
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Razor.TagHelpers.ProtocolUriScheme.Http">
+            <summary>
+            Specifies that the URI scheme is Hypertext Transfer Protocol (HTTP).
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Razor.TagHelpers.ProtocolUriScheme.Https">
+            <summary>
+            Specifies that the URI scheme is Secure Hypertext Transfer Protocol (HTTPS).
+            </summary>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.ScriptCdnTagHelper">
+            <summary>
+            Provides an implementation targeting &lt;script&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning of a static script placed on a location with a CDN role. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ScriptTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.ScriptCdnTagHelper.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ScriptCdnTagHelper"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions" /> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.ScriptTagHelper`1">
+            <summary>
+            Provides a base-class for targeting &lt;script&gt; elements that supports <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting"/> versioning.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CacheBustingTagHelper`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.ScriptTagHelper`1.#ctor(Microsoft.Extensions.Options.IOptions{`0},Cuemon.AspNetCore.Configuration.ICacheBusting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ScriptTagHelper`1"/> class.
+            </summary>
+            <param name="setup">The <typeparamref name="TOptions"/> which need to be configured.</param>
+            <param name="cacheBusting">An optional object implementing the <see cref="T:Cuemon.AspNetCore.Configuration.ICacheBusting" /> interface.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.ScriptTagHelper`1.Src">
+            <summary>
+            Gets or sets the source of the script.
+            </summary>
+            <value>The source of the script.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.ScriptTagHelper`1.Defer">
+            <summary>
+            Gets or sets a value indicating whether the script is executed when the page has finished parsing.
+            </summary>
+            <value><c>true</c> if the script is executed when the page has finished parsing; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.ScriptTagHelper`1.ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext,Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput)">
+            <summary>
+            Asynchronously executes the <see cref="T:Microsoft.AspNetCore.Razor.TagHelpers.TagHelper" /> with the given <paramref name="context" /> and <paramref name="output" />.
+            </summary>
+            <param name="context">Contains information associated with the current HTML tag.</param>
+            <param name="output">A stateful HTML element used to generate an HTML tag.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> that on completion updates the <paramref name="output" />.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions">
+            <summary>
+            Configuration options for <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CacheBustingTagHelper`1"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.CdnTagHelperOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.Scheme"/></term>
+                    <description><see cref="F:Cuemon.AspNetCore.Razor.TagHelpers.ProtocolUriScheme.Relative"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.BaseUrl"/></term>
+                    <description><c>null</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.Scheme">
+            <summary>
+            Gets or sets the <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ProtocolUriScheme"/> of these options.
+            </summary>
+            <value>The <see cref="T:Cuemon.AspNetCore.Razor.TagHelpers.ProtocolUriScheme"/> of these options.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.BaseUrl">
+            <summary>
+            Gets or sets the base URL of these options.
+            </summary>
+            <value>The base URL of these options.</value>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.GetFormattedBaseUrl">
+            <summary>
+            Gets the base URL of this instance, formatted according to the defined <see cref="P:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.Scheme"/>.
+            </summary>
+            <returns>The base URL of this instance, formatted according to the defined <see cref="P:Cuemon.AspNetCore.Razor.TagHelpers.TagHelperOptions.Scheme"/>.</returns>
+        </member>
+    </members>
+</doc>

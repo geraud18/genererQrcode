@@ -1,0 +1,1281 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cuemon.Diagnostics</name>
+    </assembly>
+    <members>
+        <member name="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions">
+            <summary>
+            Specifies options that is related to <see cref="T:Cuemon.Diagnostics.TimeMeasure" /> operations. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.Diagnostics.TimeMeasureOptions" />
+        </member>
+        <member name="M:Cuemon.Diagnostics.AsyncTimeMeasureOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.Diagnostics.AsyncTimeMeasureOptions.CancellationToken"/></term>
+                    <description><c>default</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.Diagnostics.AsyncTimeMeasureOptions.CancellationToken">
+            <summary>
+            Gets or sets the cancellation token of an asynchronous operations.
+            </summary>
+            <value>The cancellation token of an asynchronous operations.</value>
+        </member>
+        <member name="T:Cuemon.Diagnostics.ExceptionDescriptor">
+            <summary>
+            Provides information about an <see cref="T:System.Exception"/>, in a developer friendly way.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Diagnostics.ExceptionDescriptor.Extract(System.Exception,System.String,System.String,System.Uri)">
+            <summary>
+            Converts the specified <paramref name="exception"/> to a developer friendly <see cref="T:Cuemon.Diagnostics.ExceptionDescriptor"/>.
+            </summary>
+            <param name="exception">The <see cref="T:System.Exception"/> to convert.</param>
+            <param name="code">The error code that uniquely identifies the type of failure. Default is "UnhandledException".</param>
+            <param name="message">The message that explains the reason for the failure. Default is "An unhandled exception occurred.".</param>
+            <param name="helpLink">The optional link to a help page associated with this failure.</param>
+            <returns>An <see cref="T:Cuemon.Diagnostics.ExceptionDescriptor"/> initialized with the provided arguments, and (if embedded) enriched with insights of the <paramref name="exception"/>.</returns>
+            <remarks>Any meta data embedded by <see cref="M:Cuemon.ExceptionInsights.Embed``1(``0,System.Object[],Cuemon.SystemSnapshots)"/> will be extracted and added as evidence to the final result.</remarks>
+        </member>
+        <member name="M:Cuemon.Diagnostics.ExceptionDescriptor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.ExceptionDescriptor"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Diagnostics.ExceptionDescriptor.#ctor(System.Exception,System.String,System.String,System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.ExceptionDescriptor" /> class.
+            </summary>
+            <param name="failure">The <see cref="T:System.Exception"/> that caused the current failure.</param>
+            <param name="code">The error code that uniquely identifies the type of failure.</param>
+            <param name="message">The message that explains the reason for the failure.</param>
+            <param name="helpLink">The optional link to a help page associated with this failure.</param>
+            <remarks><paramref name="code"/> will remove any spaces that might be present.</remarks>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptor.Evidence">
+            <summary>
+            Gets a collection of key/value pairs that can provide additional information about the failure.
+            </summary>
+            <value>An optional collection of key/value pairs that can provide additional information about the failure.</value>
+        </member>
+        <member name="M:Cuemon.Diagnostics.ExceptionDescriptor.AddEvidence``1(System.String,``0,System.Func{``0,System.Object})">
+            <summary>
+            Adds an element of evidence to associate with the faulted operation.
+            </summary>
+            <typeparam name="T">The type of the <paramref name="evidence"/>.</typeparam>
+            <param name="context">The context of the evidence.</param>
+            <param name="evidence">The evidence itself.</param>
+            <param name="evidenceProvider">The function delegate that provides the evidence.</param>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptor.Code">
+            <summary>
+            Gets an error code that uniquely identifies the type of failure.
+            </summary>
+            <value>The number that identifies the type of failure.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptor.Message">
+            <summary>
+            Gets a message that describes the current failure.
+            </summary>
+            <value>The message that explains the reason for the failure.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptor.HelpLink">
+            <summary>
+            Gets or sets a link to the help page associated with this failure.
+            </summary>
+            <value>The location of an optional help page associated with this failure.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptor.Failure">
+            <summary>
+            Gets the <see cref="T:System.Exception"/> that caused the current failure.
+            </summary>
+            <value>The deeper cause of the failure.</value>
+        </member>
+        <member name="M:Cuemon.Diagnostics.ExceptionDescriptor.PostInitializeWith(Cuemon.Diagnostics.ExceptionDescriptorAttribute)">
+            <summary>
+            Post initialize this instance with the specified <paramref name="attribute"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Diagnostics.ExceptionDescriptor.PostInitializeWith(System.Collections.Generic.IEnumerable{Cuemon.Diagnostics.ExceptionDescriptorAttribute})">
+            <summary>
+            Post initialize this instance with a matching <see cref="T:Cuemon.Diagnostics.ExceptionDescriptorAttribute"/> from the specified <paramref name="attributes"/>.
+            </summary>
+            <param name="attributes">The attributes to find a match within.</param>
+        </member>
+        <member name="M:Cuemon.Diagnostics.ExceptionDescriptor.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="T:Cuemon.Diagnostics.ExceptionDescriptorAttribute">
+            <summary>
+            Provides information about an <see cref="T:System.Exception"/>, in a developer friendly way, optimized for open- and otherwise public application programming interfaces (API).
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Cuemon.Diagnostics.ExceptionDescriptorAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.ExceptionDescriptorAttribute"/> class.
+            </summary>
+            <param name="failureType">The <see cref="T:System.Type"/> of the failure to match and describe.</param>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptorAttribute.Code">
+            <summary>
+            Gets or sets an error code that uniquely identifies the type of failure.
+            </summary>
+            <value>The number that identifies the type of failure.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptorAttribute.Message">
+            <summary>
+            Gets or sets a default message that describes the current failure.
+            </summary>
+            <value>The default message that explains the reason for the failure.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptorAttribute.MessageResourceName">
+            <summary>
+            Gets or sets the resource name (property name) to use as the key for looking up a localized message string.
+            </summary>
+            <value>The resource name (property name) to use as the key for looking up a localized message string that describes the current failure.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptorAttribute.HelpLink">
+            <summary>
+            Gets or sets a link to the help page associated with this failure.
+            </summary>
+            <value>The location of an optional help page associated with this failure.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptorAttribute.FailureType">
+            <summary>
+            Gets the <see cref="T:System.Type"/> of <see cref="T:System.Exception"/> to match and describe.
+            </summary>
+            <value>The <see cref="T:System.Type"/> of <see cref="T:System.Exception"/> to match.</value>
+        </member>
+        <member name="T:Cuemon.Diagnostics.ExceptionDescriptorOptions">
+            <summary>
+            Specifies options that is related to <see cref="T:Cuemon.Diagnostics.ExceptionDescriptor"/> operations.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Diagnostics.ExceptionDescriptorOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.ExceptionDescriptorOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.Diagnostics.ExceptionDescriptorOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.Diagnostics.ExceptionDescriptorOptions.IncludeFailure"/></term>
+                    <description><c>true</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.Diagnostics.ExceptionDescriptorOptions.IncludeStackTrace"/></term>
+                    <description><c>true</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.Diagnostics.ExceptionDescriptorOptions.IncludeEvidence"/></term>
+                    <description><c>true</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptorOptions.IncludeFailure">
+            <summary>
+            Gets or sets a value indicating whether the <see cref="P:Cuemon.Diagnostics.ExceptionDescriptor.Failure"/> property is included in the serialized result.
+            </summary>
+            <value><c>true</c> if the <see cref="P:Cuemon.Diagnostics.ExceptionDescriptor.Failure"/> property is included in the serialized result; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptorOptions.IncludeStackTrace">
+            <summary>
+            Gets or sets a value indicating whether the stack of the <see cref="P:Cuemon.Diagnostics.ExceptionDescriptor.Failure"/> property is included in the serialized result.
+            </summary>
+            <value><c>true</c> if the stack of the <see cref="P:Cuemon.Diagnostics.ExceptionDescriptor.Failure"/> property is included in the serialized result; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ExceptionDescriptorOptions.IncludeEvidence">
+            <summary>
+            Gets or sets a value indicating whether the <see cref="P:Cuemon.Diagnostics.ExceptionDescriptor.Evidence"/> property is included in the serialized result.
+            </summary>
+            <value><c>true</c> if the <see cref="P:Cuemon.Diagnostics.ExceptionDescriptor.Evidence"/> property is included in the serialized result; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Cuemon.Diagnostics.FaultHandler`1">
+            <summary>
+            Provides a generic way to implement a fault resolver that evaluate an exception and provide details about it in a developer friendly way.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Diagnostics.FaultHandler`1.#ctor(System.Func{System.Exception,System.Boolean},System.Func{System.Exception,`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.FaultResolver"/> class.
+            </summary>
+            <param name="validator">The function delegate that evaluates an <see cref="T:System.Exception"/>.</param>
+            <param name="descriptor">The function delegate that provides details about an <see cref="T:System.Exception"/>.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="validator"/> cannot be null -or-
+            <paramref name="descriptor"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.FaultHandler`1.TryResolveFault(System.Exception,`0@)">
+            <summary>
+            Attempts to resolve <typeparamref name="TDescriptor"/> from the underlying function delegates.
+            </summary>
+            <param name="failure">The <see cref="T:System.Exception"/> that caused the current failure.</param>
+            <param name="descriptor">The resulting <typeparamref name="TDescriptor"/> instance providing the reason of the <paramref name="failure"/>, or <c>default</c>.</param>
+            <returns><c>true</c> if an instance of <typeparamref name="TDescriptor"/> providing the reason for the <paramref name="failure"/> is available, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="T:Cuemon.Diagnostics.FaultResolver">
+            <summary>
+            Provides a way to evaluate an exception and provide details about it in a developer friendly way.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Diagnostics.FaultResolver.#ctor(System.Func{System.Exception,System.Boolean},System.Func{System.Exception,Cuemon.Diagnostics.ExceptionDescriptor})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.FaultResolver"/> class.
+            </summary>
+            <param name="validator">The function delegate that evaluates an <see cref="T:System.Exception"/>.</param>
+            <param name="descriptor">The function delegate that provides details about an <see cref="T:System.Exception"/>.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="validator"/> cannot be null -or-
+            <paramref name="descriptor"/> cannot be null.
+            </exception>
+        </member>
+        <member name="T:Cuemon.Diagnostics.MemberEvidence">
+            <summary>
+            Provides evidence about a member.
+            </summary>
+        </member>
+        <member name="P:Cuemon.Diagnostics.MemberEvidence.MemberSignature">
+            <summary>
+            Gets the member signature.
+            </summary>
+            <value>The signature of the member.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.MemberEvidence.RuntimeParameters">
+            <summary>
+            Gets the runtime parameters of the member.
+            </summary>
+            <value>The runtime parameters of the member.</value>
+        </member>
+        <member name="T:Cuemon.Diagnostics.Profiler">
+            <summary>
+            Represents a base class for profiler related operations.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Diagnostics.Profiler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.Profiler"/> class.
+            </summary>
+        </member>
+        <member name="P:Cuemon.Diagnostics.Profiler.Member">
+            <summary>
+            Gets or sets the information about the member being profiled.
+            </summary>
+            <value>The information about the member being profiled.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.Profiler.Data">
+            <summary>
+            Gets or sets the data associated with the <see cref="P:Cuemon.Diagnostics.Profiler.Member"/> being profiled.
+            </summary>
+            <value>The data associated with the <see cref="P:Cuemon.Diagnostics.Profiler.Member"/> being profiled.</value>
+        </member>
+        <member name="T:Cuemon.Diagnostics.ProfilerOptions">
+            <summary>
+            Specifies options that is related to <see cref="T:Cuemon.Diagnostics.Profiler"/> operations.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Diagnostics.ProfilerOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.ProfilerOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.Diagnostics.ProfilerOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.Diagnostics.ProfilerOptions.MethodDescriptor"/></term>
+                    <description><c>null</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.Diagnostics.ProfilerOptions.RuntimeParameters"/></term>
+                    <description><c>null</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ProfilerOptions.MethodDescriptor">
+            <summary>
+            Gets or sets the callback function delegate that resolves a <see cref="T:Cuemon.Reflection.MethodDescriptor"/>.
+            </summary>
+            <value>The callback function delegate that resolves a <see cref="T:Cuemon.Reflection.MethodDescriptor"/>.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.ProfilerOptions.RuntimeParameters">
+            <summary>
+            Gets or sets an <see cref="T:System.Object"/> array that represents runtime values.
+            </summary>
+            <value>An <see cref="T:System.Object"/> array that represents runtime values.</value>
+        </member>
+        <member name="T:Cuemon.Diagnostics.TimeMeasure">
+            <summary>
+            Provides a flexible, generic and lambda friendly way to perform time measuring operations.
+            </summary>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <param name="action">The delegate to time measure.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync``1(System.Func{``0,System.Threading.CancellationToken,System.Threading.Tasks.Task},``0,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T">The type of the parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg">The parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync``2(System.Func{``0,``1,System.Threading.CancellationToken,System.Threading.Tasks.Task},``0,``1,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync``3(System.Func{``0,``1,``2,System.Threading.CancellationToken,System.Threading.Tasks.Task},``0,``1,``2,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync``4(System.Func{``0,``1,``2,``3,System.Threading.CancellationToken,System.Threading.Tasks.Task},``0,``1,``2,``3,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync``5(System.Func{``0,``1,``2,``3,``4,System.Threading.CancellationToken,System.Threading.Tasks.Task},``0,``1,``2,``3,``4,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync``6(System.Func{``0,``1,``2,``3,``4,``5,System.Threading.CancellationToken,System.Threading.Tasks.Task},``0,``1,``2,``3,``4,``5,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync``7(System.Func{``0,``1,``2,``3,``4,``5,``6,System.Threading.CancellationToken,System.Threading.Tasks.Task},``0,``1,``2,``3,``4,``5,``6,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync``8(System.Func{``0,``1,``2,``3,``4,``5,``6,``7,System.Threading.CancellationToken,System.Threading.Tasks.Task},``0,``1,``2,``3,``4,``5,``6,``7,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync``9(System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,System.Threading.CancellationToken,System.Threading.Tasks.Task},``0,``1,``2,``3,``4,``5,``6,``7,``8,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T9">The type of the ninth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg9">The ninth parameter of the <paramref name="action" /> delegate .</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithActionAsync``10(System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,System.Threading.CancellationToken,System.Threading.Tasks.Task},``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T9">The type of the ninth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T10">The type of the tenth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg9">The ninth parameter of the <paramref name="action" /> delegate .</param>
+            <param name="arg10">The tenth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="action"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``1(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}},System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``2(System.Func{``0,System.Threading.CancellationToken,System.Threading.Tasks.Task{``1}},``0,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T">The type of the parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg">The parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``3(System.Func{``0,``1,System.Threading.CancellationToken,System.Threading.Tasks.Task{``2}},``0,``1,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``4(System.Func{``0,``1,``2,System.Threading.CancellationToken,System.Threading.Tasks.Task{``3}},``0,``1,``2,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``5(System.Func{``0,``1,``2,``3,System.Threading.CancellationToken,System.Threading.Tasks.Task{``4}},``0,``1,``2,``3,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``6(System.Func{``0,``1,``2,``3,``4,System.Threading.CancellationToken,System.Threading.Tasks.Task{``5}},``0,``1,``2,``3,``4,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``7(System.Func{``0,``1,``2,``3,``4,``5,System.Threading.CancellationToken,System.Threading.Tasks.Task{``6}},``0,``1,``2,``3,``4,``5,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``8(System.Func{``0,``1,``2,``3,``4,``5,``6,System.Threading.CancellationToken,System.Threading.Tasks.Task{``7}},``0,``1,``2,``3,``4,``5,``6,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``9(System.Func{``0,``1,``2,``3,``4,``5,``6,``7,System.Threading.CancellationToken,System.Threading.Tasks.Task{``8}},``0,``1,``2,``3,``4,``5,``6,``7,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``10(System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,System.Threading.CancellationToken,System.Threading.Tasks.Task{``9}},``0,``1,``2,``3,``4,``5,``6,``7,``8,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T9">The type of the ninth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg9">The ninth parameter of the <paramref name="function" /> delegate .</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFuncAsync``11(System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,System.Threading.CancellationToken,System.Threading.Tasks.Task{``10}},``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,System.Action{Cuemon.Diagnostics.AsyncTimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T9">The type of the ninth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T10">The type of the tenth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg9">The ninth parameter of the <paramref name="function" /> delegate .</param>
+            <param name="arg10">The tenth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.AsyncTimeMeasureOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="P:Cuemon.Diagnostics.TimeMeasure.CompletedCallback">
+            <summary>
+            Gets or sets the callback that is invoked when a time measuring operation is completed.
+            </summary>
+            <value>A <see cref="T:System.Action`1"/>. The default value is <c>null</c>.</value>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction(System.Action,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <param name="action">The delegate to time measure.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction``1(System.Action{``0},``0,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T">The type of the parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg">The parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction``2(System.Action{``0,``1},``0,``1,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction``3(System.Action{``0,``1,``2},``0,``1,``2,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction``4(System.Action{``0,``1,``2,``3},``0,``1,``2,``3,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction``5(System.Action{``0,``1,``2,``3,``4},``0,``1,``2,``3,``4,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction``6(System.Action{``0,``1,``2,``3,``4,``5},``0,``1,``2,``3,``4,``5,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction``7(System.Action{``0,``1,``2,``3,``4,``5,``6},``0,``1,``2,``3,``4,``5,``6,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction``8(System.Action{``0,``1,``2,``3,``4,``5,``6,``7},``0,``1,``2,``3,``4,``5,``6,``7,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction``9(System.Action{``0,``1,``2,``3,``4,``5,``6,``7,``8},``0,``1,``2,``3,``4,``5,``6,``7,``8,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T9">The type of the ninth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg9">The ninth parameter of the <paramref name="action" /> delegate .</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithAction``10(System.Action{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9},``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="action"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T9">The type of the ninth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <typeparam name="T10">The type of the tenth parameter of the <paramref name="action" /> delegate.</typeparam>
+            <param name="action">The delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="arg9">The ninth parameter of the <paramref name="action" /> delegate .</param>
+            <param name="arg10">The tenth parameter of the <paramref name="action" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> with the result of the time measuring.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``1(System.Func{``0},System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``2(System.Func{``0,``1},``0,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T">The type of the parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg">The parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``3(System.Func{``0,``1,``2},``0,``1,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``4(System.Func{``0,``1,``2,``3},``0,``1,``2,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``5(System.Func{``0,``1,``2,``3,``4},``0,``1,``2,``3,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``6(System.Func{``0,``1,``2,``3,``4,``5},``0,``1,``2,``3,``4,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``7(System.Func{``0,``1,``2,``3,``4,``5,``6},``0,``1,``2,``3,``4,``5,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``8(System.Func{``0,``1,``2,``3,``4,``5,``6,``7},``0,``1,``2,``3,``4,``5,``6,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``9(System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8},``0,``1,``2,``3,``4,``5,``6,``7,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``10(System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9},``0,``1,``2,``3,``4,``5,``6,``7,``8,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T9">The type of the ninth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg9">The ninth parameter of the <paramref name="function" /> delegate .</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasure.WithFunc``11(System.Func{``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,``10},``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,System.Action{Cuemon.Diagnostics.TimeMeasureOptions})">
+            <summary>
+            Profile and time measure the specified <paramref name="function"/> delegate.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T6">The type of the sixth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T7">The type of the seventh parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T8">The type of the eighth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T9">The type of the ninth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="T10">The type of the tenth parameter of the <paramref name="function" /> delegate.</typeparam>
+            <typeparam name="TResult">The type of the return value of the <paramref name="function"/> delegate.</typeparam>
+            <param name="function">The function delegate to time measure.</param>
+            <param name="arg1">The first parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg2">The second parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg3">The third parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg4">The fourth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg5">The fifth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg6">The sixth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg7">The seventh parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg8">The eighth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="arg9">The ninth parameter of the <paramref name="function" /> delegate .</param>
+            <param name="arg10">The tenth parameter of the <paramref name="function" /> delegate.</param>
+            <param name="setup">The <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> with the result of the time measuring and the encapsulated <paramref name="function"/> delegate.</returns>
+        </member>
+        <member name="T:Cuemon.Diagnostics.TimeMeasureOptions">
+            <summary>
+            Specifies options that is related to <see cref="T:Cuemon.Diagnostics.TimeMeasure" /> operations.
+            </summary>
+            <seealso cref="T:Cuemon.Diagnostics.ProfilerOptions" />
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasureOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.Diagnostics.TimeMeasureOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.Diagnostics.TimeMeasureOptions.TimeMeasureCompletedThreshold"/></term>
+                    <description><see cref="F:System.TimeSpan.Zero"/></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.Diagnostics.TimeMeasureOptions.TimeMeasureCompletedThreshold">
+            <summary>
+            Gets or sets the time measuring threshold before the <see cref="P:Cuemon.Diagnostics.TimeMeasure.CompletedCallback"/> is invoked.
+            </summary>
+            <value>The time measuring threshold before the <see cref="P:Cuemon.Diagnostics.TimeMeasure.CompletedCallback"/> is invoked.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.TimeMeasureOptions.DefaultTimeMeasureCompletedThreshold">
+            <summary>
+            Gets or sets the default time measuring threshold before the <see cref="P:Cuemon.Diagnostics.TimeMeasure.CompletedCallback"/> is invoked,
+            </summary>
+            <value>The default time measuring threshold before the <see cref="P:Cuemon.Diagnostics.TimeMeasure.CompletedCallback"/> is invoked.</value>
+        </member>
+        <member name="T:Cuemon.Diagnostics.TimeMeasureProfiler">
+            <summary>
+            Represents a profiler that is optimized for time measuring operations.
+            </summary>
+            <seealso cref="T:Cuemon.Diagnostics.Profiler" />
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasureProfiler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler"/> class.
+            </summary>
+        </member>
+        <member name="P:Cuemon.Diagnostics.TimeMeasureProfiler.Timer">
+            <summary>
+            Gets the actual timer of this profiler.
+            </summary>
+            <value>The actual timer of this profiler.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.TimeMeasureProfiler.Elapsed">
+            <summary>
+            Gets the total elapsed time measured by this profiler.
+            </summary>
+            <value>A read-only <see cref="T:System.TimeSpan"/> representing the total elapsed time measured by this profiler.</value>
+        </member>
+        <member name="P:Cuemon.Diagnostics.TimeMeasureProfiler.IsRunning">
+            <summary>
+            Gets a value indicating whether this time measuring profiler is still running.
+            </summary>
+            <value><c>true</c> if this time measuring profiler is still running; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasureProfiler.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="T:Cuemon.Diagnostics.TimeMeasureProfiler`1">
+            <summary>
+            Represents a profiler that is optimized for time measuring operations that provides a return value. This class cannot be inherited.
+            </summary>
+            <typeparam name="TResult">The type of the return value.</typeparam>
+            <seealso cref="T:Cuemon.Diagnostics.TimeMeasureProfiler" />
+        </member>
+        <member name="M:Cuemon.Diagnostics.TimeMeasureProfiler`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.Diagnostics.TimeMeasureProfiler`1"/> class.
+            </summary>
+        </member>
+        <member name="P:Cuemon.Diagnostics.TimeMeasureProfiler`1.Result">
+            <summary>
+            Gets or sets the result of a time measuring operation that returned a value.
+            </summary>
+            <value>The result of a time measuring operation that returned a value.</value>
+        </member>
+    </members>
+</doc>

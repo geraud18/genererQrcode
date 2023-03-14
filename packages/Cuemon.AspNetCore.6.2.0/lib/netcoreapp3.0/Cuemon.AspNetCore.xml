@@ -1,0 +1,2164 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cuemon.AspNetCore</name>
+    </assembly>
+    <members>
+        <member name="T:Cuemon.AspNetCore.Builder.MiddlewareBuilderFactory">
+            <summary>
+            Provides support for creating, using and configuring <see cref="T:Cuemon.AspNetCore.Middleware" /> or <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> implementations.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Builder.MiddlewareBuilderFactory.UseMiddleware``1(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Adds a middleware type to the application request pipeline.
+            </summary>
+            <typeparam name="TMiddleware">The type of the middleware.</typeparam>
+            <param name="builder">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder" /> instance.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder" /> instance.</returns>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Builder.MiddlewareBuilderFactory.UseConfigurableMiddleware``2(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{``1})">
+            <summary>
+            Adds a configurable middleware type to the application request pipeline.
+            </summary>
+            <typeparam name="TMiddleware">The type of the configurable middleware.</typeparam>
+            <typeparam name="TOptions">The type of the delegate setup.</typeparam>
+            <param name="builder">The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder" /> instance.</param>
+            <param name="setup">The <see cref="T:System.Action`1"/> which need to be configured.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder" /> instance.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.ConfigurableMiddleware`1">
+            <summary>
+            Provides an base-class for configurable middleware implementation in ASP.NET Core that supports the options pattern.
+            </summary>
+            <typeparam name="TOptions">The type of the options to setup.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.Middleware" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`1.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Microsoft.Extensions.Options.IOptions`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`1.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:System.Action`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`1.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Middleware"/>.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.ConfigurableMiddleware`2">
+            <summary>
+            Provides an base-class for configurable middleware implementation in ASP.NET Core that supports the options pattern with a dependency injected parameter.
+            </summary>
+            <typeparam name="T">The type of the dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`2.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0)"/>.</typeparam>
+            <typeparam name="TOptions">The type of the options to setup.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.Middleware`1" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`2.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Microsoft.Extensions.Options.IOptions`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`2.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:System.Action`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`2.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`2" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di">The dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`2.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.ConfigurableMiddleware`3">
+            <summary>
+            Provides an base-class for configurable middleware implementation in ASP.NET Core that supports the options pattern with two dependency injected parameters.
+            </summary>
+            <typeparam name="T1">The type of the first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1)"/>.</typeparam>
+            <typeparam name="T2">The type of the second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1)"/>.</typeparam>
+            <typeparam name="TOptions">The type of the options to setup.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.Middleware`2" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`3.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{`2})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Microsoft.Extensions.Options.IOptions`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`3.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{`2})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:System.Action`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`3" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di1">The first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1)"/>.</param>
+            <param name="di2">The second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.ConfigurableMiddleware`4">
+            <summary>
+            Provides an base-class for configurable middleware implementation in ASP.NET Core that supports the options pattern with three dependency injected parameters.
+            </summary>
+            <typeparam name="T1">The type of the first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</typeparam>
+            <typeparam name="T2">The type of the second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</typeparam>
+            <typeparam name="T3">The type of the third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</typeparam>
+            <typeparam name="TOptions">The type of the options to setup.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.Middleware`3" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`4.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{`3})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Microsoft.Extensions.Options.IOptions`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`4.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{`3})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:System.Action`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`4" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di1">The first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</param>
+            <param name="di2">The second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</param>
+            <param name="di3">The third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.ConfigurableMiddleware`5">
+            <summary>
+            Provides an base-class for configurable middleware implementation in ASP.NET Core that supports the options pattern with four dependency injected parameters.
+            </summary>
+            <typeparam name="T1">The type of the first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</typeparam>
+            <typeparam name="T2">The type of the second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</typeparam>
+            <typeparam name="T3">The type of the third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</typeparam>
+            <typeparam name="T4">The type of the fourth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</typeparam>
+            <typeparam name="TOptions">The type of the options to setup.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.Middleware`4" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{`4})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Microsoft.Extensions.Options.IOptions`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{`4})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:System.Action`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`5" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di1">The first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</param>
+            <param name="di2">The second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</param>
+            <param name="di3">The third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</param>
+            <param name="di4">The fourth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.ConfigurableMiddleware`6">
+            <summary>
+            Provides an base-class for configurable middleware implementation in ASP.NET Core that supports the options pattern with five dependency injected parameters.
+            </summary>
+            <typeparam name="T1">The type of the first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</typeparam>
+            <typeparam name="T2">The type of the second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</typeparam>
+            <typeparam name="T3">The type of the third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</typeparam>
+            <typeparam name="T4">The type of the fourth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</typeparam>
+            <typeparam name="T5">The type of the fifth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</typeparam>
+            <typeparam name="TOptions">The type of the options to setup.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.Middleware`5" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{`5})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Microsoft.Extensions.Options.IOptions`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{`5})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:System.Action`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`6" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di1">The first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</param>
+            <param name="di2">The second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</param>
+            <param name="di3">The third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</param>
+            <param name="di4">The fourth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</param>
+            <param name="di5">The fifth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.ConfigurableMiddleware`6.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Configuration.CacheBusting">
+            <summary>
+            Represents a way to provide cache-busting capabilities.
+            </summary>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version">
+            <summary>
+            Gets the version to be a part of the link you need cache-busting compatible.
+            </summary>
+            <value>The version to be a part of the link you need cache-busting compatible.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Configuration.CacheBustingOptions">
+            <summary>
+            Specifies options that is related to <see cref="T:Cuemon.AspNetCore.Configuration.CacheBusting"/> operations.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Configuration.CacheBustingOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Configuration.CacheBustingOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Configuration.CacheBustingOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Configuration.CacheBustingOptions.PreferredCasing"/></term>
+                    <description><see cref="F:Cuemon.CasingMethod.LowerCase"/></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Configuration.CacheBustingOptions.PreferredCasing">
+            <summary>
+            Gets or sets the preferred casing to use on <see cref="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version"/>.
+            </summary>
+            <value>The preferred casing to use on <see cref="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version"/>.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Configuration.DynamicCacheBusting">
+            <summary>
+            Provides cache-busting capabilities on a duration based interval. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Configuration.CacheBusting" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Configuration.DynamicCacheBusting.#ctor(Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Configuration.DynamicCacheBusting"/> class.
+            </summary>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions"/> which need to be configured.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Configuration.DynamicCacheBusting.Options">
+            <summary>
+            Gets the configured options of this instance.
+            </summary>
+            <value>The configured options of this instance.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Configuration.DynamicCacheBusting.UtcChanged">
+            <summary>
+            Gets the UTC timestamp from when the <see cref="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version"/> was last changed.
+            </summary>
+            <value>The UTC timestamp from when the <see cref="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version"/> was last changed.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Configuration.DynamicCacheBusting.Version">
+            <summary>
+            Gets the version to be a part of the link you need cache-busting compatible.
+            </summary>
+            <value>The version to be a part of the link you need cache-busting compatible.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions">
+            <summary>
+            Specifies options that is related to <see cref="T:Cuemon.AspNetCore.Configuration.DynamicCacheBusting"/> operations.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Configuration.CacheBustingOptions" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions.PreferredLength"/></term>
+                    <description>8</description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions.PreferredCharacters"/></term>
+                    <description><see cref="F:Cuemon.Alphanumeric.LettersAndNumbers"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions.TimeToLive"/></term>
+                    <description>12 hours</description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions.PreferredLength">
+            <summary>
+            Gets or sets the preferred length of <see cref="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version"/>.
+            </summary>
+            <value>The preferred length of <see cref="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version"/>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions.PreferredCharacters">
+            <summary>
+            Gets or sets the preferred characters of <see cref="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version"/>.
+            </summary>
+            <value>The preferred characters of <see cref="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version"/>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Configuration.DynamicCacheBustingOptions.TimeToLive">
+            <summary>
+            Gets or sets the TTL of <see cref="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version"/>.
+            </summary>
+            <value>The TTL of <see cref="P:Cuemon.AspNetCore.Configuration.CacheBusting.Version"/>.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Configuration.ICacheBusting">
+            <summary>
+            An interface to provide cache-busting capabilities.
+            </summary>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Configuration.ICacheBusting.Version">
+            <summary>
+            Gets the version to be a part of the link you need cache-busting compatible.
+            </summary>
+            <value>The version to be a part of the link you need cache-busting compatible.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Diagnostics.HttpExceptionDescriptor">
+            <summary>
+            Provides information about an <see cref="T:System.Exception" />, in a developer friendly way, optimized for open- and otherwise public application programming interfaces (API).
+            Implements the <see cref="T:Cuemon.Diagnostics.ExceptionDescriptor" />
+            </summary>
+            <seealso cref="T:Cuemon.Diagnostics.ExceptionDescriptor" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.HttpExceptionDescriptor.#ctor(System.Exception,System.Int32,System.String,System.String,System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Diagnostics.HttpExceptionDescriptor" /> class.
+            </summary>
+            <param name="failure">The <see cref="T:System.Exception"/> that caused the current failure.</param>
+            <param name="statusCode">The status code of the HTTP request.</param>
+            <param name="code">The error code that uniquely identifies the type of failure.</param>
+            <param name="message">The message that explains the reason for the failure.</param>
+            <param name="helpLink">The optional link to a help page associated with this failure.</param>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Diagnostics.HttpExceptionDescriptor"/>.
+            <list type="table">
+                <listheader>
+                    <term>Parameter</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><paramref name="statusCode"/></term>
+                    <description><c>StatusCodes.Status500InternalServerError</c></description>
+                </item>
+                <item>
+                    <term><paramref name="code"/></term>
+                    <description><c>code ?? ReasonPhrases.GetReasonPhrase(statusCode)</c></description>
+                </item>
+                <item>
+                    <term><paramref name="message"/></term>
+                    <description><c>message ?? failure.Message</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Diagnostics.HttpExceptionDescriptor.StatusCode">
+            <summary>
+            Gets or sets the HTTP status code of the service request the caller made.
+            </summary>
+            <value>The HTTP status code of the service request the caller made.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Diagnostics.HttpExceptionDescriptor.RequestId">
+            <summary>
+            Gets or sets the request identifier that uniquely identifies the service request the caller made.
+            </summary>
+            <value>An identifier that uniquely identifies the service request the caller made.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Diagnostics.HttpExceptionDescriptor.CorrelationId">
+            <summary>
+            Gets or sets the correlation identifier that allows a reference to a particular transaction or event chain the caller made.
+            </summary>
+            <value>An identifier that allows a reference to a particular transaction or event chain the caller made.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Diagnostics.IServerTiming">
+            <summary>
+            Represents the Server Timing as per W3C Working Draft 28 July 2020 (https://www.w3.org/TR/2020/WD-server-timing-20200728/).
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.IServerTiming.AddServerTiming(System.String)">
+            <summary>
+            Adds a <see cref="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric"/> to the <see cref="P:Cuemon.AspNetCore.Diagnostics.IServerTiming.Metrics"/>.
+            </summary>
+            <param name="name">The server-specified metric name.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.IServerTiming.AddServerTiming(System.String,System.TimeSpan)">
+            <summary>
+            Adds a <see cref="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric"/> to the <see cref="P:Cuemon.AspNetCore.Diagnostics.IServerTiming.Metrics"/>.
+            </summary>
+            <param name="name">The server-specified metric name.</param>
+            <param name="duration">The server-specified metric duration.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.IServerTiming.AddServerTiming(System.String,System.TimeSpan,System.String)">
+            <summary>
+            Adds a <see cref="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric"/> to the <see cref="P:Cuemon.AspNetCore.Diagnostics.IServerTiming.Metrics"/>.
+            </summary>
+            <param name="name">The server-specified metric name.</param>
+            <param name="duration">The server-specified metric duration.</param>
+            <param name="description">The server-specified metric description.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Diagnostics.IServerTiming.Metrics">
+            <summary>
+            Gets the entries used to communicate one or more metrics and descriptions for the given request-response cycle.
+            </summary>
+            <value>The entries used to communicate one or more metrics and descriptions for the given request-response cycle.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Diagnostics.ServerTiming">
+            <summary>
+            Provides a default implementation of the <see cref="T:Cuemon.AspNetCore.Diagnostics.IServerTiming"/> interface.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Diagnostics.IServerTiming" />
+        </member>
+        <member name="F:Cuemon.AspNetCore.Diagnostics.ServerTiming.HeaderName">
+            <summary>
+            The name of the Server-Timing header field.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.ServerTiming.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Diagnostics.ServerTiming"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.ServerTiming.AddServerTiming(System.String)">
+            <summary>
+            Adds a <see cref="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric" /> to the <see cref="P:Cuemon.AspNetCore.Diagnostics.ServerTiming.Metrics" />.
+            </summary>
+            <param name="name">The server-specified metric name.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.ServerTiming.AddServerTiming(System.String,System.TimeSpan)">
+            <summary>
+            Adds a <see cref="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric" /> to the <see cref="P:Cuemon.AspNetCore.Diagnostics.ServerTiming.Metrics" />.
+            </summary>
+            <param name="name">The server-specified metric name.</param>
+            <param name="duration">The server-specified metric duration.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.ServerTiming.AddServerTiming(System.String,System.TimeSpan,System.String)">
+            <summary>
+            Adds a <see cref="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric" /> to the <see cref="P:Cuemon.AspNetCore.Diagnostics.ServerTiming.Metrics" />.
+            </summary>
+            <param name="name">The server-specified metric name.</param>
+            <param name="duration">The server-specified metric duration.</param>
+            <param name="description">The server-specified metric description.</param>
+            <returns>A reference to this instance after the operation has completed.</returns>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Diagnostics.ServerTiming.Metrics">
+            <summary>
+            Gets the entries used to communicate one or more metrics and descriptions for the given request-response cycle.
+            </summary>
+            <value>The entries used to communicate one or more metrics and descriptions for the given request-response cycle.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric">
+            <summary>
+            Represents a HTTP Server-Timing header field entry to communicate one metric and description for the given request-response cycle.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric.#ctor(System.String,System.Nullable{System.TimeSpan},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric"/> class.
+            </summary>
+            <param name="name">The server-specified metric name.</param>
+            <param name="duration">The server-specified metric duration.</param>
+            <param name="description">The server-specified metric description.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric.Name">
+            <summary>
+            Gets the server-specified metric name.
+            </summary>
+            <value>The server-specified metric name.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric.Duration">
+            <summary>
+            Gets the server-specified metric duration.
+            </summary>
+            <value>The server-specified metric duration.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric.Description">
+            <summary>
+            Gets the server-specified metric description.
+            </summary>
+            <value>The server-specified metric description.</value>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.ServerTimingMetric.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMiddleware">
+            <summary>
+            Provides a Server-Timing middleware implementation for ASP.NET Core.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.ServerTimingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Diagnostics.ServerTimingMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Diagnostics.ServerTimingMiddleware" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.ChecksumBuilderDecoratorExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> class tailored to adhere the decorator pattern.
+            </summary>
+            <seealso cref="T:Cuemon.IDecorator`1"/>
+            <seealso cref="T:Cuemon.Decorator`1"/>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.ChecksumBuilderDecoratorExtensions.ToEntityTagHeaderValue(Cuemon.IDecorator{Cuemon.Data.Integrity.ChecksumBuilder},System.Boolean)">
+            <summary>
+            Creates an <see cref="T:Microsoft.Net.Http.Headers.EntityTagHeaderValue"/> from the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/>.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="isWeak">A value that indicates if this entity-tag header is a weak validator.</param>
+            <returns>An <see cref="T:Microsoft.Net.Http.Headers.EntityTagHeaderValue"/> that is initiated with a hexadecimal representation of the enclosed <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> of the <paramref name="decorator"/> and a value that indicates if the tag is weak.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.HeaderDictionaryDecoratorExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Microsoft.AspNetCore.Http.IHeaderDictionary"/> interface tailored to adhere the decorator pattern.
+            </summary>
+            <seealso cref="T:Cuemon.IDecorator`1"/>
+            <seealso cref="T:Cuemon.Decorator`1"/>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.HeaderDictionaryDecoratorExtensions.AddOrUpdateHeader(Cuemon.IDecorator{Microsoft.AspNetCore.Http.IHeaderDictionary},System.String,Microsoft.Extensions.Primitives.StringValues,System.Boolean)">
+            <summary>
+            Attempts to add or update an existing element with the provided key and value to the enclosed <see cref="T:Microsoft.AspNetCore.Http.IHeaderDictionary"/> of the <paramref name="decorator"/>.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="key">The string to use as the key of the element to add.</param>
+            <param name="value">The string to use as the value of the element to add.</param>
+            <param name="useAsciiEncodingConversion">if set to <c>true</c> an ASCII encoding conversion is applied to the <paramref name="value"/>.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.HeaderDictionaryDecoratorExtensions.AddOrUpdateHeaders(Cuemon.IDecorator{Microsoft.AspNetCore.Http.IHeaderDictionary},System.Net.Http.Headers.HttpResponseHeaders)">
+            <summary>
+            Attempts to add or update one or more elements from the provided collection of <paramref name="responseHeaders"/> to the enclosed <see cref="T:Microsoft.AspNetCore.Http.IHeaderDictionary"/> of the <paramref name="decorator"/>.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="responseHeaders">The <see cref="T:System.Net.Http.Headers.HttpResponseHeaders"/> to copy.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.CacheableMiddleware">
+            <summary>
+            Provides a Cache-Control middleware implementation for ASP.NET Core.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.CacheableMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Http.Headers.CacheableOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.CacheableMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Http.Headers.CacheableOptions" /> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.CacheableMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{Cuemon.AspNetCore.Http.Headers.CacheableOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.CacheableMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Http.Headers.CacheableOptions" /> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.CacheableMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Http.Headers.CacheableMiddleware" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.CacheableOptions">
+            <summary>
+            Configuration options for <see cref="T:Cuemon.AspNetCore.Http.Headers.CacheableMiddleware"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.CacheableOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.CacheableOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Http.Headers.CacheableOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.CacheControl"/></term>
+                    <description><code>
+                        new CacheControlHeaderValue()
+                        {
+                            Public = true,
+                            MustRevalidate = true,
+                            NoTransform = true,
+                            MaxAge = TimeSpan.FromDays(7)
+                        };
+                    </code></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.Expires"/></term>
+                    <description><c>new ExpiresHeaderValue(TimeSpan.FromDays(7));</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.CacheControl">
+            <summary>
+            Gets or sets the Cache-Control header associated with a HTTP response.
+            </summary>
+            <value>The Cache-Control header associated with a HTTP response.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.Expires">
+            <summary>
+            Gets or sets the Expires header associated with a HTTP response.
+            </summary>
+            <value>The Expires header associated with a HTTP response.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.Validators">
+            <summary>
+            Gets the validators that will be invoked one by one in <see cref="M:Cuemon.AspNetCore.Http.Headers.CacheableMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)"/>.
+            </summary>
+            <value>The validators that will be invoked by <see cref="T:Cuemon.AspNetCore.Http.Headers.CacheableMiddleware"/>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.UseCacheControl">
+            <summary>
+            Gets a value indicating whether this instance has an assigned <see cref="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.CacheControl"/> value.
+            </summary>
+            <value><c>true</c> if this instance has a <see cref="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.CacheControl"/> assigned; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.UseExpires">
+            <summary>
+            Gets a value indicating whether this instance has an assigned <see cref="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.Expires"/> value.
+            </summary>
+            <value><c>true</c> if this instance has an <see cref="P:Cuemon.AspNetCore.Http.Headers.CacheableOptions.Expires"/> assigned; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierMiddleware">
+            <summary>
+            Provides a Correlation ID middleware implementation for ASP.NET Core.
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierMiddleware.HttpContextItemsKey">
+            <summary>
+            The key from where the Correlation ID is stored throughout the request scope.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions" /> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierMiddleware" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions">
+            <summary>
+            Configuration options for <see cref="T:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierMiddleware"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions.HeaderName"/></term>
+                    <description><c>X-Correlation-ID</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions.CorrelationProvider"/></term>
+                    <description><c>DynamicCorrelation.Create(Guid.NewGuid().ToString("N")</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions.HeaderName">
+            <summary>
+            Gets or sets the name of the correlation identifier HTTP header.
+            </summary>
+            <value>The name of the correlation identifier HTTP header.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.CorrelationIdentifierOptions.CorrelationProvider">
+            <summary>
+            Gets or sets the function delegate that provides the correlation implementation.
+            </summary>
+            <value>The function delegate that provides the correlation implementation.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.ExpiresHeaderValue">
+            <summary>
+            Represents a HTTP Expires header that contains the date/time after which the response is considered stale.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.ExpiresHeaderValue.#ctor(System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.ExpiresHeaderValue"/> class.
+            </summary>
+            <param name="expires">The <see cref="T:System.TimeSpan"/> value for when the client-cache expires.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.ExpiresHeaderValue.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.ICacheableValidator">
+            <summary>
+            An HTTP validator tailored for cacheable flows, that asynchronously surrounds execution of the intercepted response body.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.ICacheableValidator.ProcessAsync(Microsoft.AspNetCore.Http.HttpContext,System.IO.Stream)">
+            <summary>
+            Called asynchronously before the <paramref name="bodyStream"/> is conditionally written to the response.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNetCore.Http.HttpContext" /> of the current request.</param>
+            <param name="bodyStream">The intercepted <see cref="T:System.IO.Stream" /> of the response body.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that represents the execution of this validator.</returns>
+            <remarks><paramref name="bodyStream"/> is written to the response body if condition is not equal to a 304 status code.</remarks>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.RequestIdentifierMiddleware">
+            <summary>
+            Provides a Request ID middleware implementation for ASP.NET Core.
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Http.Headers.RequestIdentifierMiddleware.HttpContextItemsKey">
+            <summary>
+            The key from where the Request ID is stored throughout the request scope.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.RequestIdentifierMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.RequestIdentifierMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions" /> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.RequestIdentifierMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.RequestIdentifierMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.RequestIdentifierMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Http.Headers.RequestIdentifierMiddleware" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions">
+            <summary>
+            Configuration options for <see cref="T:Cuemon.AspNetCore.Http.Headers.RequestIdentifierMiddleware"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions.HeaderName"/></term>
+                    <description><c>X-Request-ID</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions.RequestProvider"/></term>
+                    <description><c>DynamicRequest.Create(Guid.NewGuid().ToString("N")</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions.HeaderName">
+            <summary>
+            Gets or sets the name of the correlation identifier HTTP header.
+            </summary>
+            <value>The name of the correlation identifier HTTP header.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.RequestIdentifierOptions.RequestProvider">
+            <summary>
+            Gets or sets the function delegate that provides the correlation implementation.
+            </summary>
+            <value>The function delegate that provides the correlation implementation.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.RetryConditionScope">
+            <summary>
+            Specifies a set of values defining what value to use with a given HTTP header in regards to a retry condition. Recommended value is always <see cref="F:Cuemon.AspNetCore.Http.Headers.RetryConditionScope.DeltaSeconds"/> as it does not rely on clock synchronization and is resilient to clock skew between client and server.
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Http.Headers.RetryConditionScope.DeltaSeconds">
+            <summary>
+            A non-negative decimal integer indicating the seconds to delay after the response is received.
+            </summary>
+        </member>
+        <member name="F:Cuemon.AspNetCore.Http.Headers.RetryConditionScope.HttpDate">
+            <summary>
+            A date after which to retry.
+            </summary>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.UserAgentException">
+            <summary>
+            The exception that is thrown when the requirements of an HTTP User-Agent header is not meet.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.UserAgentException.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.UserAgentException"/> class.
+            </summary>
+            <param name="statusCode">The HTTP status code to associate with this exception.</param>
+            <param name="message">The message that describes the HTTP status code.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.UserAgentException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.UserAgentException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelMiddleware">
+            <summary>
+            Provides a HTTP User-Agent sentinel middleware implementation for ASP.NET Core.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions" /> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions" /> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelMiddleware" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions">
+            <summary>
+            Configuration options for <see cref="T:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelMiddleware"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.AllowedUserAgents"/></term>
+                    <description><c>new List{string{>}();</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.BadRequestMessage"/></term>
+                    <description>The requirements of the HTTP User-Agent header was not met.</description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.ForbiddenMessage"/></term>
+                    <description>The HTTP User-Agent specified was rejected.</description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.RequireUserAgentHeader"/></term>
+                    <description><c>false</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.ValidateUserAgentHeader"/></term>
+                    <description><c>false</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.ResponseHandler"/></term>
+                    <description>A <see cref="T:System.Net.Http.HttpResponseMessage"/> initialized to either a HTTP status code 400 or 403 and a body of either <see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.BadRequestMessage"/> or <see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.ForbiddenMessage"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.UseGenericResponse"/></term>
+                    <description><c>false</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.ResponseHandler">
+            <summary>
+            Gets or sets the function delegate that configures the response in the form of a <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+            <value>The function delegate that configures the response in the form of a <see cref="T:System.Net.Http.HttpResponseMessage"/>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.UseGenericResponse">
+            <summary>
+            Gets or sets a value indicating whether the produced <see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.ResponseHandler"/> should be as neutral as possible.
+            </summary>
+            <value><c>true</c> if the produced <see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.ResponseHandler"/> should be as neutral as possible; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.RequireUserAgentHeader">
+            <summary>
+            Gets or sets a value indicating whether a HTTP User-Agent header must be present in the request.
+            </summary>
+            <value><c>true</c> if the HTTP User-Agent header must be present in the request; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.ValidateUserAgentHeader">
+            <summary>
+            Gets or sets a value indicating whether a HTTP User-Agent header must be validated against <see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.AllowedUserAgents"/>.
+            </summary>
+            <value><c>true</c> if the HTTP User-Agent header must be validated against <see cref="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.AllowedUserAgents"/>; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.AllowedUserAgents">
+            <summary>
+            Gets a list of whitelisted user agents.
+            </summary>
+            <value>A list of whitelisted user agents.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.BadRequestMessage">
+            <summary>
+            Gets or sets the message of a request missing the requirements of a User-Agent header.
+            </summary>
+            <value>The message of a request missing the requirements of a User-Agent header.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions.ForbiddenMessage">
+            <summary>
+            Gets or sets the message of a request without a valid User-Agent header.
+            </summary>
+            <value>The message of a request without a valid User-Agent header.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.HttpContextDecoratorExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/> class tailored to adhere the decorator pattern.
+            This API supports the product infrastructure and is not intended to be used directly from your code.
+            </summary>
+            <seealso cref="T:Cuemon.IDecorator`1"/>
+            <seealso cref="T:Cuemon.Decorator`1"/>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpContextDecoratorExtensions.InvokeThrottlerSentinelAsync(Cuemon.IDecorator{Microsoft.AspNetCore.Http.HttpContext},Cuemon.AspNetCore.Http.Throttling.IThrottlingCache,Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions,System.Action{System.Net.Http.HttpResponseMessage,Microsoft.AspNetCore.Http.HttpResponse})">
+            <summary>
+            Common throttler operation logic for ASP.NET Core and ASP.NET Core MVC. Not intended to be used directly from your code.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="tc">The <see cref="T:Cuemon.AspNetCore.Http.Throttling.IThrottlingCache"/> implementation.</param>
+            <param name="options">The configured options.</param>
+            <param name="transformer">The delegate that merges an instance of <see cref="T:System.Net.Http.HttpResponseMessage"/> into the <see cref="T:Microsoft.AspNetCore.Http.HttpResponse"/> pipeline.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpContextDecoratorExtensions.InvokeUserAgentSentinelAsync(Cuemon.IDecorator{Microsoft.AspNetCore.Http.HttpContext},Cuemon.AspNetCore.Http.Headers.UserAgentSentinelOptions,System.Action{System.Net.Http.HttpResponseMessage,Microsoft.AspNetCore.Http.HttpResponse})">
+            <summary>
+            Common user agent logic for ASP.NET Core and ASP.NET Core MVC. Not intended to be used directly from your code.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="options">The configured options.</param>
+            <param name="transformer">The delegate that merges an instance of <see cref="T:System.Net.Http.HttpResponseMessage"/> into the <see cref="T:Microsoft.AspNetCore.Http.HttpResponse"/> pipeline.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.HttpRequestDecoratorExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> class tailored to adhere the decorator pattern.
+            </summary>
+            <seealso cref="T:Cuemon.IDecorator`1"/>
+            <seealso cref="T:Cuemon.Decorator`1"/>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpRequestDecoratorExtensions.IsGetOrHeadMethod(Cuemon.IDecorator{Microsoft.AspNetCore.Http.HttpRequest})">
+            <summary>
+            Determines whether the enclosed <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> of the <paramref name="decorator"/> is served by either a GET or a HEAD method.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <returns><c>true</c> if the enclosed <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> of the <paramref name="decorator"/> is served by either a GET or a HEAD method; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpRequestDecoratorExtensions.IsClientSideResourceCached(Cuemon.IDecorator{Microsoft.AspNetCore.Http.HttpRequest},Cuemon.Data.Integrity.ChecksumBuilder)">
+            <summary>
+            Determines whether a cached version of the enclosed <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> of the <paramref name="decorator"/> is found client-side using the If-None-Match HTTP header.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="builder">A <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> that represents the integrity of the client.</param>
+            <returns><c>true</c> if a cached version of the enclosed <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> of the <paramref name="decorator"/> is found client-side; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null -or
+            <paramref name="builder"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpRequestDecoratorExtensions.IsClientSideResourceCached(Cuemon.IDecorator{Microsoft.AspNetCore.Http.HttpRequest},System.DateTime)">
+            <summary>
+            Determines whether a cached version of the enclosed <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> of the <paramref name="decorator"/> is found client-side using the If-Modified-Since HTTP header.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="lastModified">A <see cref="T:System.DateTime"/> value that represents the modification date of the content.</param>
+            <returns><c>true</c> if a cached version of the enclosed <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> of the <paramref name="decorator"/> is found client-side; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.HttpResponseDecoratorExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Microsoft.AspNetCore.Http.HttpResponse"/> class tailored to adhere the decorator pattern.
+            </summary>
+            <seealso cref="T:Cuemon.IDecorator`1"/>
+            <seealso cref="T:Cuemon.Decorator`1"/>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpResponseDecoratorExtensions.AddOrUpdateEntityTagHeader(Cuemon.IDecorator{Microsoft.AspNetCore.Http.HttpResponse},Microsoft.AspNetCore.Http.HttpRequest,Cuemon.Data.Integrity.ChecksumBuilder,System.Boolean)">
+            <summary>
+            Attempts to add or update the enclosed <see cref="T:Microsoft.AspNetCore.Http.HttpResponse"/> of the <paramref name="decorator"/> with the necessary HTTP response headers needed to provide entity tag header information.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="request">An instance of the <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> object.</param>
+            <param name="builder">A <see cref="T:Cuemon.Data.Integrity.ChecksumBuilder"/> that represents the integrity of the client.</param>
+            <param name="isWeak">A value that indicates if this entity-tag header is a weak validator.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null -or-
+            <paramref name="request"/> cannot be null -or-
+            <paramref name="builder"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpResponseDecoratorExtensions.AddOrUpdateLastModifiedHeader(Cuemon.IDecorator{Microsoft.AspNetCore.Http.HttpResponse},Microsoft.AspNetCore.Http.HttpRequest,System.DateTime)">
+            <summary>
+            Attempts to add or update the enclosed <see cref="T:Microsoft.AspNetCore.Http.HttpResponse"/> of the <paramref name="decorator"/> with the necessary HTTP response headers needed to provide last-modified information.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="request">An instance of the <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/> object.</param>
+            <param name="lastModified">A value that represents when the resource was either created or last modified.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null -or-
+            <paramref name="request"/> cannot be null.
+            </exception>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Int32DecoratorExtensions">
+            <summary>
+            Extension methods for the <see cref="T:System.Int32"/> struct tailored to adhere the decorator pattern.
+            </summary>
+            <seealso cref="T:Cuemon.IDecorator`1"/>
+            <seealso cref="T:Cuemon.Decorator`1"/>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Int32DecoratorExtensions.IsInformationStatusCode(Cuemon.IDecorator{System.Int32})">
+            <summary>
+            Determines whether the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> is within the informational range.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <returns><c>true</c> if the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> was in the <b>Information</b> range (100-199); otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Int32DecoratorExtensions.IsSuccessStatusCode(Cuemon.IDecorator{System.Int32})">
+            <summary>
+            Determines whether the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> is within the successful range.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <returns><c>true</c> if the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> was in the <b>Successful</b> range (200-299); otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Int32DecoratorExtensions.IsRedirectionStatusCode(Cuemon.IDecorator{System.Int32})">
+            <summary>
+            Determines whether the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> is within the redirecting range.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <returns><c>true</c> if the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> was in the <b>Redirection</b> range (300-399); otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Int32DecoratorExtensions.IsNotModifiedStatusCode(Cuemon.IDecorator{System.Int32})">
+            <summary>
+            Determines whether the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> equals a 304 Not Modified.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <returns><c>true</c> if the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> is <b>NotModified</b> (304); otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Int32DecoratorExtensions.IsClientErrorStatusCode(Cuemon.IDecorator{System.Int32})">
+            <summary>
+            Determines whether the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> is within the client error related range.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <returns><c>true</c> if the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> was in the <b>Client Error</b> range (400-499); otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Int32DecoratorExtensions.IsServerErrorStatusCode(Cuemon.IDecorator{System.Int32})">
+            <summary>
+            Determines whether the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> is within the server error related range.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <returns><c>true</c> if the enclosed <see cref="T:System.Int32"/> of the <paramref name="decorator"/> was in the <b>Server Error</b> range (500-599); otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.BadRequestException">
+            <summary>
+            The exception that is thrown when the server could not understand the request due to invalid syntax.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.BadRequestException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.BadRequestException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.BadRequestException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.BadRequestException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.BadRequestException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.BadRequestException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.BadRequestException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.BadRequestException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.ConflictException">
+            <summary>
+            The exception that is thrown when a request conflicts with the current state of the server.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.ConflictException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.ConflictException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.ConflictException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.ConflictException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.ConflictException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.ConflictException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.ConflictException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.ConflictException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.ForbiddenException">
+            <summary>
+            The exception that is thrown when the client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401, the client's identity is known to the server.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.ForbiddenException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.ForbiddenException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.ForbiddenException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.ForbiddenException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.ForbiddenException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.ForbiddenException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.ForbiddenException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.ForbiddenException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.GoneException">
+            <summary>
+            The exception that is thrown when the requested content has been permanently deleted from server, with no forwarding address.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.GoneException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.GoneException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.GoneException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.GoneException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.GoneException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.GoneException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.GoneException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.GoneException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.HttpStatusCodeException">
+            <summary>
+            Provides a base-class for exceptions based on an HTTP status code.
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpStatusCodeException.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException"/> class.
+            </summary>
+            <param name="statusCode">The HTTP status code to associate with this exception.</param>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpStatusCodeException.#ctor(System.Int32,System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" /> class.
+            </summary>
+            <param name="statusCode">The HTTP status code to associate with this exception.</param>
+            <param name="reasonPhrase">The HTTP reason phrase to associate with <paramref name="statusCode" /> and this exception.</param>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpStatusCodeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.HttpStatusCodeException.StatusCode">
+            <summary>
+            Gets the HTTP status code associated with this exception.
+            </summary>
+            <value>The HTTP status code associated with this exception.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.HttpStatusCodeException.ReasonPhrase">
+            <summary>
+            Gets the HTTP reason phrase associated with this exception.
+            </summary>
+            <value>The HTTP reason phrase associated with this exception.</value>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpStatusCodeException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> with information about the exception.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.HttpStatusCodeException.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.MethodNotAllowedException">
+            <summary>
+            The exception that is thrown when the request method is known by the server but has been disabled and cannot be used.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.MethodNotAllowedException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.MethodNotAllowedException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.MethodNotAllowedException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.MethodNotAllowedException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.MethodNotAllowedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.MethodNotAllowedException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.MethodNotAllowedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.MethodNotAllowedException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.NotAcceptableException">
+            <summary>
+            The exception that is thrown when the web server, after performing server-driven content negotiation, does not find any content that conforms to the criteria given by the user agent.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.NotAcceptableException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.NotAcceptableException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.NotAcceptableException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.NotAcceptableException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.NotAcceptableException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.MethodNotAllowedException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.NotAcceptableException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.MethodNotAllowedException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.NotFoundException">
+            <summary>
+            The exception that is thrown when the server can not find the requested resource.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.NotFoundException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.NotFoundException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.NotFoundException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.NotFoundException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.NotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.NotFoundException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.NotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.NotFoundException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.PayloadTooLargeException">
+            <summary>
+            The exception that is thrown when the request entity is larger than limits defined by server.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PayloadTooLargeException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PayloadTooLargeException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PayloadTooLargeException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PayloadTooLargeException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PayloadTooLargeException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PayloadTooLargeException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PayloadTooLargeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PayloadTooLargeException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.PreconditionFailedException">
+            <summary>
+            The exception that is thrown when the client has indicated preconditions in its headers which the server does not meet.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PreconditionFailedException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PreconditionFailedException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PreconditionFailedException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PreconditionFailedException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PreconditionFailedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PreconditionFailedException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PreconditionFailedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PreconditionFailedException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.PreconditionRequiredException">
+            <summary>
+            The exception that is thrown when the origin server requires the request to be conditional.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PreconditionRequiredException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PreconditionRequiredException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PreconditionRequiredException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PreconditionRequiredException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PreconditionRequiredException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PreconditionRequiredException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.PreconditionRequiredException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.PreconditionRequiredException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Throttling.IThrottlingCache">
+            <summary>
+            Specifies the contract for the storage of a throttling cache.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest" />
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Throttling.MemoryThrottlingCache">
+            <summary>
+            Provides a simple in-memory representation of the <see cref="T:Cuemon.AspNetCore.Http.Throttling.IThrottlingCache"/>. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest" />
+            <seealso cref="T:Cuemon.AspNetCore.Http.Throttling.IThrottlingCache" />
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Throttling.ThrottleQuota">
+            <summary>
+            Specifies the allowed quota and window duration of HTTP requests.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottleQuota.#ctor(System.Int32,System.Double,Cuemon.TimeUnit)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottleQuota"/> class.
+            </summary>
+            <param name="rateLimit">The allowed rate from within a given <paramref name="window"/>.</param>
+            <param name="window">The duration of the window.</param>
+            <param name="windowUnit">One of the enumeration values that specifies the time unit of <paramref name="window"/>.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottleQuota.#ctor(System.Int32,System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottleQuota"/> class.
+            </summary>
+            <param name="rateLimit">The allowed rate from within a given <paramref name="window"/>.</param>
+            <param name="window">The duration of the window.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottleQuota.RateLimit">
+            <summary>
+            Gets the allowed rate before throttling.
+            </summary>
+            <value>The allowed rate before throttling.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottleQuota.Window">
+            <summary>
+            Gets the allowed window duration before throttling.
+            </summary>
+            <value>The allowed window duration before throttling.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest">
+            <summary>
+            Represents the request usage and quota in the context of throttling.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest.#ctor(Cuemon.AspNetCore.Http.Throttling.ThrottleQuota)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest"/> class.
+            </summary>
+            <param name="quota">The allowed quota of HTTP requests.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest.Total">
+            <summary>
+            Gets the total amount of HTTP requests.
+            </summary>
+            <value>The total amount of HTTP requests.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest.Expires">
+            <summary>
+            Gets the computed expiration value of a throttled rate limit.
+            </summary>
+            <value>The computed expiration value of throttled rate limit.</value>
+            <remarks>This property is measured in Coordinated Universal Time (UTC) (also known as Greenwich Mean Time).</remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest.Quota">
+            <summary>
+            Gets the throttling quota that defines the rate limit of HTTP requests.
+            </summary>
+            <value>The throttling quota that defines the rate limit of HTTP requests.</value>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest.IncrementTotal">
+            <summary>
+            Increments the total amount of HTTP requests by 1.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest.Refresh">
+            <summary>
+            Evaluates and refreshes this instance when required (<see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest.Expires"/> and <see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottleRequest.Total"/>).
+            </summary>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingException">
+            <summary>
+            The exception that is thrown when a given request threshold has been reached and then throttled.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.TooManyRequestsException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottlingException.#ctor(System.String,System.Int32,System.TimeSpan,System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="rateLimit">The allowed rate of requests for a given window.</param>
+            <param name="delta">The remaining duration of a window.</param>
+            <param name="reset">The date and time when a window is being reset.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottlingException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingException.RateLimit">
+            <summary>
+            Gets the allowed rate of requests for a given window.
+            </summary>
+            <value>The allowed rate of requests for a given window.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingException.Delta">
+            <summary>
+            Gets the remaining duration of a window.
+            </summary>
+            <value>The remaining duration of a window.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingException.Reset">
+            <summary>
+            Gets date and time when a window is being reset.
+            </summary>
+            <value>The date and time when a window is being reset.</value>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottlingException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> with information about the exception.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelMiddleware">
+            <summary>
+            Provides an API throttling middleware implementation for ASP.NET Core.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions" /> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions" /> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Cuemon.AspNetCore.Http.Throttling.IThrottlingCache)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelMiddleware" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di">The dependency injected <see cref="T:Cuemon.AspNetCore.Http.Throttling.IThrottlingCache"/> of <see cref="M:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Cuemon.AspNetCore.Http.Throttling.IThrottlingCache)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions">
+            <summary>
+            Configuration options for <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelMiddleware"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.RateLimitHeaderName"/></term>
+                    <description><c>X-RateLimit-Limit</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.RateLimitRemainingHeaderName"/></term>
+                    <description><c>X-RateLimit-Remaining</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.RateLimitResetHeaderName"/></term>
+                    <description><c>X-RateLimit-Reset</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.RateLimitResetScope"/></term>
+                    <description><see cref="F:Cuemon.AspNetCore.Http.Headers.RetryConditionScope.DeltaSeconds"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.UseRetryAfterHeader"/></term>
+                    <description><c>true</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.RetryAfterScope"/></term>
+                    <description><see cref="F:Cuemon.AspNetCore.Http.Headers.RetryConditionScope.DeltaSeconds"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.TooManyRequestsMessage"/></term>
+                    <description>Throttling rate limit quota violation. Quota limit exceeded.</description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.ContextResolver"/></term>
+                    <description><c>null</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.Quota"/></term>
+                    <description><c>null</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.ResponseBroker"/></term>
+                    <description>A <see cref="T:System.Net.Http.HttpResponseMessage"/> initialized to a HTTP status code 429 with zero of one Retry-After header and a body of <see cref="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.TooManyRequestsMessage"/>.</description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.ResponseBroker">
+            <summary>
+            Gets or sets the function delegate that configures the response in the form of a <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+            <value>The function delegate that configures the response in the form of a <see cref="T:System.Net.Http.HttpResponseMessage"/>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.ContextResolver">
+            <summary>
+            Gets or sets the function delegate that will resolve a unique context of the throttling middleware (eg. IP-address, Authorization header, etc.).
+            </summary>
+            <value>The function delegate that will resolve a unique context of the throttling middleware.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.Quota">
+            <summary>
+            Gets or sets the allowed quota for a given context.
+            </summary>
+            <value>The allowed quota for a given context.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.TooManyRequestsMessage">
+            <summary>
+            Gets or sets the message of a throttled request that has exceeded the rate limit.
+            </summary>
+            <value>The message of a throttled request that has exceeded the rate limit.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.RateLimitHeaderName">
+            <summary>
+            Gets or sets the name of the rate limit HTTP header.
+            </summary>
+            <value>The name of the rate limit HTTP header.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.RateLimitRemainingHeaderName">
+            <summary>
+            Gets or sets the name of the rate limit remaining HTTP header.
+            </summary>
+            <value>The name of the rate limit remaining HTTP header.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.RateLimitResetHeaderName">
+            <summary>
+            Gets or sets the name of the rate limit reset HTTP header.
+            </summary>
+            <value>The name of the rate limit reset HTTP header.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.RateLimitResetScope">
+            <summary>
+            Gets or sets the preferred rate limit reset HTTP header value that conforms with RFC 7231.
+            </summary>
+            <value>The preferred rate limit reset HTTP header value that conforms with RFC 7231.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.UseRetryAfterHeader">
+            <summary>
+            Gets or sets a value indicating whether to include a Retry-After HTTP header specifying how long to wait before making a new request.
+            </summary>
+            <value><c>true</c> to include a Retry-After HTTP header specifying how long to wait before making a new request; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Http.Throttling.ThrottlingSentinelOptions.RetryAfterScope">
+            <summary>
+            Gets or sets the preferred Retry-After HTTP header value that conforms with RFC 7231.
+            </summary>
+            <value>The preferred Retry-After HTTP header value that conforms with RFC 7231.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.TooManyRequestsException">
+            <summary>
+            The exception that is thrown when the user has sent too many requests in a given amount of time ("rate limiting").
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.TooManyRequestsException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.TooManyRequestsException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.TooManyRequestsException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.TooManyRequestsException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.TooManyRequestsException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.TooManyRequestsException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.TooManyRequestsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.TooManyRequestsException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.UnauthorizedException">
+            <summary>
+            The exception that is thrown when the requirements of an HTTP WWW-Authenticate header is not meet.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.UnauthorizedException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.UnauthorizedException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.UnauthorizedException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.UnauthorizedException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.UnauthorizedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.UnauthorizedException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.UnauthorizedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.UnauthorizedException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Http.UnsupportedMediaTypeException">
+            <summary>
+            The exception that is thrown when the media format of the requested data is not supported by the server, so the server is rejecting the request.
+            </summary>
+            <seealso cref="T:Cuemon.AspNetCore.Http.HttpStatusCodeException" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.UnsupportedMediaTypeException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.UnsupportedMediaTypeException"/> class.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.UnsupportedMediaTypeException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.UnsupportedMediaTypeException"/> class.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.UnsupportedMediaTypeException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.UnsupportedMediaTypeException"/> class.
+            </summary>
+            <param name="message">The message that describes the HTTP status code.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Http.UnsupportedMediaTypeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Http.UnsupportedMediaTypeException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Hosting.HostingEnvironmentMiddleware">
+            <summary>
+            Provides a hosting environment middleware implementation for ASP.NET Core.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Hosting.HostingEnvironmentMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Hosting.HostingEnvironmentMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions" /> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Hosting.HostingEnvironmentMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Hosting.HostingEnvironmentMiddleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions" /> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Hosting.HostingEnvironmentMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.Extensions.Hosting.IHostEnvironment)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Hosting.HostingEnvironmentMiddleware" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di">The dependency injected <see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/> of <see cref="M:Cuemon.AspNetCore.Hosting.HostingEnvironmentMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.Extensions.Hosting.IHostEnvironment)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions">
+            <summary>
+            Configuration options for <see cref="T:Cuemon.AspNetCore.Hosting.HostingEnvironmentMiddleware"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions.HeaderName"/></term>
+                    <description><c>X-Hosting-Environment</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions.SuppressHeaderPredicate"/></term>
+                    <description><c>_ => false</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions.HeaderName">
+            <summary>
+            Gets or sets the name of the hosting environment HTTP header.
+            </summary>
+            <value>The name of the hosting environment HTTP header.</value>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Hosting.HostingEnvironmentOptions.SuppressHeaderPredicate">
+            <summary>
+            Gets or sets the predicate that can suppress the hosting environment HTTP header.
+            </summary>
+            <value>The function delegate that can determine if the hosting environment HTTP header should be suppressed.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Infrastructure.ConfigurableMiddlewareCore`1">
+            <summary>
+            Provides an base-class for configurable middleware implementation in ASP.NET Core that supports the options pattern.
+            This API supports the product infrastructure and is not intended to be used directly from your code.
+            </summary>
+            <typeparam name="TOptions">The type of the options to setup.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.Middleware" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Infrastructure.ConfigurableMiddlewareCore`1.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.Action{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Middleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:System.Action`1"/> which need to be configured.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Infrastructure.ConfigurableMiddlewareCore`1.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Options.IOptions{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Middleware`1"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+            <param name="setup">The <see cref="T:Microsoft.Extensions.Options.IOptions`1"/> which need to be configured.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Infrastructure.ConfigurableMiddlewareCore`1.Options">
+            <summary>
+            Gets the configured options of this <see cref="T:Cuemon.AspNetCore.Middleware"/>.
+            </summary>
+            <value>The configured options of this <see cref="T:Cuemon.AspNetCore.Middleware"/>.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Infrastructure.MiddlewareCore">
+            <summary>
+            Provides a base-class for middleware implementation in ASP.NET Core.
+            This API supports the product infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Infrastructure.MiddlewareCore.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Middleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+        </member>
+        <member name="P:Cuemon.AspNetCore.Infrastructure.MiddlewareCore.Next">
+            <summary>
+            Gets the delegate of the request pipeline to invoke.
+            </summary>
+            <value>The delegate of the request pipeline to invoke.</value>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Middleware">
+            <summary>
+            Provides a base-class for middleware implementation in ASP.NET Core.
+            </summary>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Middleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Middleware"/>.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Middleware`1">
+            <summary>
+            Provides a base-class for middleware implementation in ASP.NET Core with one dependency injected parameters.
+            </summary>
+            <typeparam name="T">The type of the dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`1.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0)"/>.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`2" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware`1.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Middleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware`1.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Middleware`1" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di">The dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`1.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Middleware`2">
+            <summary>
+            Provides a base-class for middleware implementation in ASP.NET Core with two dependency injected parameters.
+            </summary>
+            <typeparam name="T1">The type of the first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`2.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1)"/>.</typeparam>
+            <typeparam name="T2">The type of the second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`2.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1)"/>.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`3" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware`2.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Middleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware`2.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Middleware`2" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di1">The first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`2.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1)"/>.</param>
+            <param name="di2">The second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`2.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Middleware`3">
+            <summary>
+            Provides a base-class for middleware implementation in ASP.NET Core with three dependency injected parameters.
+            </summary>
+            <typeparam name="T1">The type of the first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</typeparam>
+            <typeparam name="T2">The type of the second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</typeparam>
+            <typeparam name="T3">The type of the third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`4" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware`3.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Middleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Middleware`3" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di1">The first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</param>
+            <param name="di2">The second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</param>
+            <param name="di3">The third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`3.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Middleware`4">
+            <summary>
+            Provides a base-class for middleware implementation in ASP.NET Core with four dependency injected parameters.
+            </summary>
+            <typeparam name="T1">The type of the first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</typeparam>
+            <typeparam name="T2">The type of the second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</typeparam>
+            <typeparam name="T3">The type of the third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</typeparam>
+            <typeparam name="T4">The type of the fourth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`5" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware`4.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Middleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Middleware`4" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di1">The first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</param>
+            <param name="di2">The second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</param>
+            <param name="di3">The third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</param>
+            <param name="di4">The fourth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`4.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+        <member name="T:Cuemon.AspNetCore.Middleware`5">
+            <summary>
+            Provides a base-class for middleware implementation in ASP.NET Core with five dependency injected parameters.
+            </summary>
+            <typeparam name="T1">The type of the first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</typeparam>
+            <typeparam name="T2">The type of the second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</typeparam>
+            <typeparam name="T3">The type of the third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</typeparam>
+            <typeparam name="T4">The type of the fourth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</typeparam>
+            <typeparam name="T5">The type of the fifth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</typeparam>
+            <seealso cref="T:Cuemon.AspNetCore.ConfigurableMiddleware`6" />
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware`5.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.AspNetCore.Middleware"/> class.
+            </summary>
+            <param name="next">The delegate of the request pipeline to invoke.</param>
+        </member>
+        <member name="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)">
+            <summary>
+            Executes the <see cref="T:Cuemon.AspNetCore.Middleware`5" />.
+            </summary>
+            <param name="context">The context of the current request.</param>
+            <param name="di1">The first dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</param>
+            <param name="di2">The second dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</param>
+            <param name="di3">The third dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</param>
+            <param name="di4">The fourth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</param>
+            <param name="di5">The fifth dependency injected parameter of <see cref="M:Cuemon.AspNetCore.Middleware`5.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,`0,`1,`2,`3,`4)"/>.</param>
+            <returns>A task that represents the execution of this middleware.</returns>
+        </member>
+    </members>
+</doc>

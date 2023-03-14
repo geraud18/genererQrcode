@@ -1,0 +1,804 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cuemon.IO</name>
+    </assembly>
+    <members>
+        <member name="T:Cuemon.IO.AsyncDisposableOptions">
+            <summary>
+            Configuration options for <see cref="T:System.IDisposable"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.AsyncDisposableOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.AsyncDisposableOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.AsyncDisposableOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.AsyncDisposableOptions.LeaveOpen"/></term>
+                    <description><c>false</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.AsyncDisposableOptions.LeaveOpen">
+            <summary>
+            Gets or sets a value indicating whether a disposable object should bypass the mechanism for releasing unmanaged resources. Default is <c>false</c>.
+            </summary>
+            <value><c>true</c> if a disposable object should bypass the mechanism for releasing unmanaged resources; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Cuemon.IO.AsyncStreamCompressionOptions">
+            <summary>
+            Configuration options for compressed <see cref="T:System.IO.Stream"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.AsyncStreamCompressionOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.AsyncStreamCompressionOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.AsyncStreamCompressionOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.AsyncStreamCompressionOptions.Level"/></term>
+                    <description><see cref="F:System.IO.Compression.CompressionLevel.Optimal"/></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.AsyncStreamCompressionOptions.Level">
+            <summary>
+            Gets or sets the enumeration values that indicates whether to emphasize speed or compression efficiency when compressing the stream.
+            </summary>
+            <value>The level of the compression.</value>
+        </member>
+        <member name="T:Cuemon.IO.AsyncStreamCopyOptions">
+            <summary>
+            Configuration options that is related to <see cref="T:System.IO.Stream"/> copy operations.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.AsyncStreamCopyOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.StreamCopyOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.StreamCopyOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.AsyncStreamCopyOptions.BufferSize"/></term>
+                    <description>81920</description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.AsyncStreamCopyOptions.BufferSize">
+            <summary>
+            Gets or sets the size of the buffer.
+            </summary>
+            <value>The size of the buffer.</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="value" /> is lower than or equal to 0.
+            </exception>
+        </member>
+        <member name="T:Cuemon.IO.AsyncStreamEncodingOptions">
+            <summary>
+            Configuration options for <see cref="T:System.IO.Stream"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.AsyncStreamEncodingOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.AsyncStreamEncodingOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.AsyncStreamEncodingOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.AsyncStreamEncodingOptions.Preamble"/></term>
+                    <description><see cref="P:Cuemon.Text.EncodingOptions.DefaultPreambleSequence"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.AsyncStreamEncodingOptions.Encoding"/></term>
+                    <description><see cref="P:Cuemon.Text.EncodingOptions.DefaultEncoding"/></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.AsyncStreamEncodingOptions.Preamble">
+            <summary>
+            Gets or sets the action to take in regards to encoding related preamble sequences.
+            </summary>
+            <value>A value that indicates whether to preserve or remove preamble sequences.</value>
+        </member>
+        <member name="P:Cuemon.IO.AsyncStreamEncodingOptions.Encoding">
+            <summary>
+            Gets or sets the character encoding to use for the operation.
+            </summary>
+            <value>The character encoding to use for the operation.</value>
+        </member>
+        <member name="T:Cuemon.IO.AsyncStreamReaderOptions">
+            <summary>
+            Configuration options for <see cref="T:System.IO.StreamReader"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.AsyncStreamReaderOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.AsyncStreamReaderOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.AsyncStreamReaderOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.AsyncStreamEncodingOptions.Preamble"/></term>
+                    <description><see cref="P:Cuemon.Text.EncodingOptions.DefaultPreambleSequence"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.AsyncStreamEncodingOptions.Encoding"/></term>
+                    <description><see cref="P:Cuemon.Text.EncodingOptions.DefaultEncoding"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.AsyncStreamReaderOptions.BufferSize"/></term>
+                    <description><c>81920</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.AsyncStreamReaderOptions.BufferSize">
+            <summary>
+            Gets or sets the size of the buffer.
+            </summary>
+            <value>The size of the buffer.</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="value" /> is lower than or equal to 0.
+            </exception>
+        </member>
+        <member name="T:Cuemon.IO.StreamDecoratorExtensions">
+            <summary>
+            Extension methods for the <see cref="T:System.IO.Stream"/> class tailored to adhere the decorator pattern.
+            </summary>
+            <seealso cref="T:Cuemon.IDecorator`1"/>
+            <seealso cref="T:Cuemon.Decorator`1"/>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.CopyStreamAsync(Cuemon.IDecorator{System.IO.Stream},System.IO.Stream,System.Int32,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously reads the bytes from the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> and writes them to the <paramref name="destination"/>.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="destination">The <see cref="T:System.IO.Stream"/> to which the contents of the current stream will be copied.</param>
+            <param name="bufferSize">The size of the buffer. This value must be greater than zero. The default size is 81920.</param>
+            <param name="changePosition">if <c>true</c>, the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> will temporarily have its position changed to 0; otherwise the position is left untouched.</param>
+            <param name="ct">The token to monitor for cancellation requests. The default value is <see cref="P:System.Threading.CancellationToken.None"/>.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.ToByteArray(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.StreamCopyOptions})">
+            <summary>
+            Converts the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> to its equivalent <see cref="T:byte[]"/> representation.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamCopyOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:byte[]"/> that is equivalent to the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> cannot be read from.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.ToByteArrayAsync(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.AsyncStreamCopyOptions})">
+            <summary>
+            Converts the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> to its equivalent <see cref="T:byte[]"/> representation.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.AsyncStreamCopyOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:byte[]"/> that is equivalent to the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> cannot be read from.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.ToEncodedString(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.StreamReaderOptions})">
+            <summary>
+            Converts the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> to a <see cref="T:System.String"/>.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamReaderOptions"/> which may be configured.</param>
+            <returns>A <see cref="T:System.String"/> containing the result of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <remarks><see cref="T:Cuemon.Text.IEncodingOptions"/> will be initialized with <see cref="P:Cuemon.Text.EncodingOptions.DefaultPreambleSequence"/> and <see cref="P:Cuemon.Text.EncodingOptions.DefaultEncoding"/>.</remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            <paramref name="setup"/> was initialized with an invalid <see cref="P:Cuemon.IO.StreamEncodingOptions.Preamble"/>.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.ToEncodedStringAsync(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.AsyncStreamReaderOptions})">
+            <summary>
+            Converts the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> to a <see cref="T:System.String"/>.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.AsyncStreamReaderOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a <see cref="T:System.String"/> containing the result of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <remarks><see cref="T:Cuemon.Text.IEncodingOptions"/> will be initialized with <see cref="P:Cuemon.Text.EncodingOptions.DefaultPreambleSequence"/> and <see cref="P:Cuemon.Text.EncodingOptions.DefaultEncoding"/>.</remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            <paramref name="setup"/> was initialized with an invalid <see cref="P:Cuemon.IO.StreamEncodingOptions.Preamble"/>.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.CompressBrotli(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.StreamCompressionOptions})">
+            <summary>
+            Compress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using the <c>Brotli</c> algorithm.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamCompressionOptions"/> which may be configured.</param>
+            <returns>A compressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.CompressBrotliAsync(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.AsyncStreamCompressionOptions})">
+            <summary>
+            Compress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using the <c>Brotli</c> algorithm.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.AsyncStreamCompressionOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a compressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.DecompressBrotli(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.StreamCopyOptions})">
+            <summary>
+            Decompress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using <c>Brotli</c> data format specification.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamCopyOptions"/> which may be configured.</param>
+            <returns>A decompressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+            <exception cref="T:System.IO.InvalidDataException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> was compressed using an unsupported compression method.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.DecompressBrotliAsync(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.AsyncStreamCopyOptions})">
+            <summary>
+            Decompress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using <c>Brotli</c> data format specification.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.AsyncStreamCopyOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a decompressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+            <exception cref="T:System.IO.InvalidDataException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> was compressed using an unsupported compression method.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.CompressGZip(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.StreamCompressionOptions})">
+            <summary>
+            Compress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using the <c>GZip</c> algorithm.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamCompressionOptions"/> which may be configured.</param>
+            <returns>A compressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.CompressGZipAsync(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.AsyncStreamCompressionOptions})">
+            <summary>
+            Compress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using the <c>GZip</c> algorithm.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.AsyncStreamCompressionOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a compressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.DecompressGZip(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.StreamCopyOptions})">
+            <summary>
+            Decompress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using <c>GZip</c> data format specification.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamCopyOptions"/> which may be configured.</param>
+            <returns>A decompressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+            <exception cref="T:System.IO.InvalidDataException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> was compressed using an unsupported compression method.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.DecompressGZipAsync(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.AsyncStreamCopyOptions})">
+            <summary>
+            Decompress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using <c>GZip</c> data format specification.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.AsyncStreamCopyOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a decompressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+            <exception cref="T:System.IO.InvalidDataException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> was compressed using an unsupported compression method.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.CompressDeflate(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.StreamCompressionOptions})">
+            <summary>
+            Compress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using the <c>Deflate</c> algorithm.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamCompressionOptions"/> which may be configured.</param>
+            <returns>A compressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.CompressDeflateAsync(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.AsyncStreamCompressionOptions})">
+            <summary>
+            Compress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using the <c>Deflate</c> algorithm.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.AsyncStreamCompressionOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a compressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.DecompressDeflate(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.StreamCopyOptions})">
+            <summary>
+            Decompress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using <c>Deflate</c> data format specification.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamCopyOptions"/> which may be configured.</param>
+            <returns>A decompressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+            <exception cref="T:System.IO.InvalidDataException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> was compressed using an unsupported compression method.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.DecompressDeflateAsync(Cuemon.IDecorator{System.IO.Stream},System.Action{Cuemon.IO.AsyncStreamCopyOptions})">
+            <summary>
+            Decompress the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/> using <c>Deflate</c> data format specification.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.AsyncStreamCopyOptions"/> which may be configured.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a decompressed version of the enclosed <see cref="T:System.IO.Stream"/> of the specified <paramref name="decorator"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support write operations such as compression.
+            </exception>
+            <exception cref="T:System.IO.InvalidDataException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> was compressed using an unsupported compression method.
+            </exception>
+        </member>
+        <member name="M:Cuemon.IO.StreamDecoratorExtensions.WriteAllAsync(Cuemon.IDecorator{System.IO.Stream},System.Byte[])">
+            <summary>
+            Asynchronously writes a sequence of bytes to the enclosed <see cref="T:System.IO.Stream"/> of the <paramref name="decorator"/> with the entire size of the <paramref name="buffer"/> starting from position 0.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="buffer">The buffer to write data from.</param>
+            <returns>A task that represents the asynchronous write operation.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> is null -or-
+            <paramref name="buffer"/> is null.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> does not support writing.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> has been disposed.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The enclosed <see cref="T:System.IO.Stream"/> of <paramref name="decorator"/> is currently in use by a previous write operation.
+            </exception>
+        </member>
+        <member name="T:Cuemon.IO.TextReaderDecoratorExtensions">
+            <summary>
+            Extension methods for the <see cref="T:System.IO.TextReader"/> class tailored to adhere the decorator pattern.
+            </summary>
+            <seealso cref="T:Cuemon.IDecorator`1"/>
+            <seealso cref="T:Cuemon.Decorator`1"/>
+        </member>
+        <member name="M:Cuemon.IO.TextReaderDecoratorExtensions.CopyToAsync(Cuemon.IDecorator{System.IO.TextReader},System.IO.TextWriter,System.Int32)">
+            <summary>
+            Asynchronously reads the bytes from the enclosed <see cref="T:System.IO.TextReader"/> of the specified <paramref name="decorator"/> and writes them to the <paramref name="writer"/>.
+            </summary>
+            <param name="decorator">The <see cref="T:Cuemon.IDecorator`1"/> to extend.</param>
+            <param name="writer">The <see cref="T:System.IO.TextWriter"/> to asynchronously write bytes to.</param>
+            <param name="bufferSize">The size, in bytes, of the buffer. This value must be greater than zero. The default size is 81920.</param>
+            <returns>A task that represents the asynchronous copy operation.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="decorator"/> cannot be null -or-
+            <paramref name="writer"/> cannot be null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="bufferSize" /> is lower than or equal to 0.
+            </exception>
+        </member>
+        <member name="T:Cuemon.IO.FileInfoOptions">
+            <summary>
+            Configuration options for <see cref="T:System.IO.FileInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.FileInfoOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.FileInfoOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.FileInfoOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.FileInfoOptions.BytesToRead"/></term>
+                    <description>0</description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.FileInfoOptions.BytesToRead">
+            <summary>
+            Gets or sets the amount of bytes to read from a file.
+            </summary>
+            <value>The amount of bytes to read from a file.</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="value" /> is lower than 0.
+            </exception>
+        </member>
+        <member name="T:Cuemon.IO.StreamCompressionOptions">
+            <summary>
+            Configuration options for compressed <see cref="T:System.IO.Stream"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.StreamCompressionOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.StreamCompressionOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.StreamCompressionOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamCompressionOptions.Level"/></term>
+                    <description><see cref="F:System.IO.Compression.CompressionLevel.Optimal"/></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.StreamCompressionOptions.Level">
+            <summary>
+            Gets or sets the enumeration values that indicates whether to emphasize speed or compression efficiency when compressing the stream.
+            </summary>
+            <value>The level of the compression.</value>
+        </member>
+        <member name="T:Cuemon.IO.StreamCopyOptions">
+            <summary>
+            Configuration options that is related to <see cref="T:System.IO.Stream"/> copy operations.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.StreamCopyOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.StreamCopyOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.StreamCopyOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamCopyOptions.BufferSize"/></term>
+                    <description>81920</description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.StreamCopyOptions.BufferSize">
+            <summary>
+            Gets or sets the size of the buffer.
+            </summary>
+            <value>The size of the buffer.</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="value" /> is lower than or equal to 0.
+            </exception>
+        </member>
+        <member name="T:Cuemon.IO.StreamEncodingOptions">
+            <summary>
+            Configuration options for <see cref="T:System.IO.Stream"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.StreamEncodingOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.StreamEncodingOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.StreamEncodingOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamEncodingOptions.Preamble"/></term>
+                    <description><see cref="P:Cuemon.Text.EncodingOptions.DefaultPreambleSequence"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamEncodingOptions.Encoding"/></term>
+                    <description><see cref="P:Cuemon.Text.EncodingOptions.DefaultEncoding"/></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.StreamEncodingOptions.Preamble">
+            <summary>
+            Gets or sets the action to take in regards to encoding related preamble sequences.
+            </summary>
+            <value>A value that indicates whether to preserve or remove preamble sequences.</value>
+        </member>
+        <member name="P:Cuemon.IO.StreamEncodingOptions.Encoding">
+            <summary>
+            Gets or sets the character encoding to use for the operation.
+            </summary>
+            <value>The character encoding to use for the operation.</value>
+        </member>
+        <member name="T:Cuemon.IO.StreamFactory">
+            <summary>
+            Provides access to factory methods for creating <see cref="T:System.IO.Stream"/> instances.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.StreamFactory.Create(System.Action{System.IO.StreamWriter},System.Action{Cuemon.IO.StreamWriterOptions})">
+            <summary>
+            Creates and returns a <see cref="T:System.IO.Stream"/> by the specified delegate <paramref name="writer"/>.
+            </summary>
+            <param name="writer">The delegate that will create an in-memory <see cref="T:System.IO.Stream"/>.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamWriterOptions"/> which need to be configured.</param>
+            <returns>A <see cref="T:System.IO.Stream"/> holding the content created by the delegate <paramref name="writer"/>.</returns>
+        </member>
+        <member name="M:Cuemon.IO.StreamFactory.Create``1(System.Action{System.IO.StreamWriter,``0},``0,System.Action{Cuemon.IO.StreamWriterOptions})">
+            <summary>
+            Creates and returns a <see cref="T:System.IO.Stream"/> by the specified delegate <paramref name="writer"/>.
+            </summary>
+            <typeparam name="T">The type of the parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <param name="writer">The delegate that will create an in-memory <see cref="T:System.IO.Stream"/>.</param>
+            <param name="arg">The parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamWriterOptions"/> which need to be configured.</param>
+            <returns>A <see cref="T:System.IO.Stream"/> holding the content created by the delegate <paramref name="writer"/>.</returns>
+        </member>
+        <member name="M:Cuemon.IO.StreamFactory.Create``2(System.Action{System.IO.StreamWriter,``0,``1},``0,``1,System.Action{Cuemon.IO.StreamWriterOptions})">
+            <summary>
+            Creates and returns a <see cref="T:System.IO.Stream"/> by the specified delegate <paramref name="writer"/>.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <param name="writer">The delegate that will create an in-memory <see cref="T:System.IO.Stream"/>.</param>
+            <param name="arg1">The first parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="arg2">The second parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamWriterOptions"/> which need to be configured.</param>
+            <returns>A <see cref="T:System.IO.Stream"/> holding the content created by the delegate <paramref name="writer"/>.</returns>
+        </member>
+        <member name="M:Cuemon.IO.StreamFactory.Create``3(System.Action{System.IO.StreamWriter,``0,``1,``2},``0,``1,``2,System.Action{Cuemon.IO.StreamWriterOptions})">
+            <summary>
+            Creates and returns a <see cref="T:System.IO.Stream"/> by the specified delegate <paramref name="writer"/>.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <param name="writer">The delegate that will create an in-memory <see cref="T:System.IO.Stream"/>.</param>
+            <param name="arg1">The first parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="arg2">The second parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="arg3">The third parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamWriterOptions"/> which need to be configured.</param>
+            <returns>A <see cref="T:System.IO.Stream"/> holding the content created by the delegate <paramref name="writer"/>.</returns>
+        </member>
+        <member name="M:Cuemon.IO.StreamFactory.Create``4(System.Action{System.IO.StreamWriter,``0,``1,``2,``3},``0,``1,``2,``3,System.Action{Cuemon.IO.StreamWriterOptions})">
+            <summary>
+            Creates and returns a <see cref="T:System.IO.Stream"/> by the specified delegate <paramref name="writer"/>.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <param name="writer">The delegate that will create an in-memory <see cref="T:System.IO.Stream"/>.</param>
+            <param name="arg1">The first parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="arg2">The second parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="arg3">The third parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="arg4">The fourth parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamWriterOptions"/> which need to be configured.</param>
+            <returns>A <see cref="T:System.IO.Stream"/> holding the content created by the delegate <paramref name="writer"/>.</returns>
+        </member>
+        <member name="M:Cuemon.IO.StreamFactory.Create``5(System.Action{System.IO.StreamWriter,``0,``1,``2,``3,``4},``0,``1,``2,``3,``4,System.Action{Cuemon.IO.StreamWriterOptions})">
+            <summary>
+            Creates and returns a <see cref="T:System.IO.Stream"/> by the specified delegate <paramref name="writer"/>.
+            </summary>
+            <typeparam name="T1">The type of the first parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <typeparam name="T2">The type of the second parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <typeparam name="T3">The type of the third parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <typeparam name="T5">The type of the fifth parameter of the delegate <paramref name="writer"/>.</typeparam>
+            <param name="writer">The delegate that will create an in-memory <see cref="T:System.IO.Stream"/>.</param>
+            <param name="arg1">The first parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="arg2">The second parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="arg3">The third parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="arg4">The fourth parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="arg5">The fifth parameter of the delegate <paramref name="writer"/>.</param>
+            <param name="setup">The <see cref="T:Cuemon.IO.StreamWriterOptions"/> which need to be configured.</param>
+            <returns>A <see cref="T:System.IO.Stream"/> holding the content created by the delegate <paramref name="writer"/>.</returns>
+        </member>
+        <member name="T:Cuemon.IO.StreamReaderOptions">
+            <summary>
+            Configuration options for <see cref="T:System.IO.StreamReader"/>.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.StreamReaderOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.StreamReaderOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.StreamReaderOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamEncodingOptions.Preamble"/></term>
+                    <description><see cref="P:Cuemon.Text.EncodingOptions.DefaultPreambleSequence"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamEncodingOptions.Encoding"/></term>
+                    <description><see cref="P:Cuemon.Text.EncodingOptions.DefaultEncoding"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamReaderOptions.BufferSize"/></term>
+                    <description><c>81920</c></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.StreamReaderOptions.BufferSize">
+            <summary>
+            Gets or sets the minimum size of the buffer.
+            </summary>
+            <value>The minimum size of the buffer.</value>
+        </member>
+        <member name="T:Cuemon.IO.StreamWriterOptions">
+            <summary>
+            Configuration options for <see cref="T:System.IO.StreamWriter" />.
+            </summary>
+        </member>
+        <member name="M:Cuemon.IO.StreamWriterOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cuemon.IO.StreamWriterOptions"/> class.
+            </summary>
+            <remarks>
+            The following table shows the initial property values for an instance of <see cref="T:Cuemon.IO.StreamWriterOptions"/>.
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <description>Initial Value</description>
+                </listheader>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamWriterOptions.AutoFlush"/></term>
+                    <description><c>false</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamWriterOptions.BufferSize"/></term>
+                    <description><c>1024</c></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamEncodingOptions.Preamble"/></term>
+                    <description><see cref="F:Cuemon.Text.PreambleSequence.Keep"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamEncodingOptions.Encoding"/></term>
+                    <description><see cref="P:Cuemon.Text.EncodingOptions.DefaultEncoding"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamWriterOptions.FormatProvider"/></term>
+                    <description><see cref="P:System.Globalization.CultureInfo.InvariantCulture"/></description>
+                </item>
+                <item>
+                    <term><see cref="P:Cuemon.IO.StreamWriterOptions.NewLine"/></term>
+                    <description><see cref="P:System.Environment.NewLine"/></description>
+                </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Cuemon.IO.StreamWriterOptions.AutoFlush">
+            <summary>
+            Gets or sets a value indicating whether the <see cref="T:System.IO.StreamWriter"/> will flush its buffer to the underlying stream after every call to the <c>Write</c> method.
+            </summary>
+            <value><c>true</c> to force <see cref="T:System.IO.StreamWriter"/> to flush its buffer; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cuemon.IO.StreamWriterOptions.BufferSize">
+            <summary>
+            Gets or sets the size of the buffer.
+            </summary>
+            <value>The size of the buffer in bytes for the <see cref="T:System.IO.StreamWriter"/>.</value>
+        </member>
+        <member name="P:Cuemon.IO.StreamWriterOptions.FormatProvider">
+            <summary>
+            Gets or sets the culture-specific formatting information used when writing data with the <see cref="T:System.IO.StreamWriter"/>.
+            </summary>
+            <value>An <see cref="T:System.IFormatProvider"/> that contains the culture-specific formatting information. The default is <see cref="P:System.Globalization.CultureInfo.InvariantCulture"/>.</value>
+        </member>
+        <member name="P:Cuemon.IO.StreamWriterOptions.NewLine">
+            <summary>
+            Gets or sets the line terminator string used by the <see cref="T:System.IO.StreamWriter"/>.
+            </summary>
+            <value>The line terminator string for the <see cref="T:System.IO.StreamWriter"/>.</value>
+        </member>
+    </members>
+</doc>
